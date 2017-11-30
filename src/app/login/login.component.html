@@ -6,4 +6,11 @@
 <ng-template #showLogin>
   <p>Please login.</p>
   <button (click)="login()">Login with Google</button>
+
+  <p>Register with email and password</p>
+  Email: <input type="text" name="email" value="name@example.com"><br>
+  Password: <input type="text" name="pass" value="***"><br>
+  
+  <button (click)="registerWithEmail('test@you.me', 'ewaeds')">Register</button>
+  
 </ng-template>

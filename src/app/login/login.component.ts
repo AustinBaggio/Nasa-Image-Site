@@ -11,6 +11,14 @@ import * as firebase from 'firebase/app';
 export class LoginComponent {
   constructor(public afAuth: AngularFireAuth) {
   }
+  registerWithEmail(e, p){
+
+    this.afAuth.auth.createUserWithEmailAndPassword(e, p);
+
+  }
+  loginWithEmail(e,p){
+    this.afAuth.auth.signInWithEmailAndPassword(e,p);
+  }
   login() {
     this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   }
