@@ -9,11 +9,12 @@ import * as firebase from 'firebase/app';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+ 
   constructor(public afAuth: AngularFireAuth) {
   }
   registerWithEmail(e, p){
-
-    this.afAuth.auth.createUserWithEmailAndPassword(e, p);
+    console.log(e,p)
+    //this.afAuth.auth.createUserWithEmailAndPassword(e, p);
 
   }
   loginWithEmail(e,p){
