@@ -55,10 +55,11 @@ router.route('/message')
         console.log(req.body);
         var message = new Message();      // create a new instance of the message model
         message.timeStamp = Date.now();  // set the message timestamp (comes from the request)
-        message.courseID = req.body.courseID; //change it to the button later                                 !!!
-        message.messageBody = req.body.messageBody; //change it to the text field under the button later       !!!
-        counter+=1;
-        message.count = counter;     
+        message.pPolicy = req.body.pPolicy;  
+        message.sPolicy = req.body.sPolicy; 
+        message.dmcaPolicy = req.body.dmcaPolicy; 
+        message.contact = req.body.contact;  
+        
         // save the message and check for errors
         message.save(function(err) {
             if (err)

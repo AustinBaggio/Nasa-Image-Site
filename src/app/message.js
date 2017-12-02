@@ -3,9 +3,10 @@ var Schema       = mongoose.Schema;
 
 var MessageSchema   = new Schema({
     timeStamp: String,
-    courseID: String,
-    messageBody: String,
-    count: String
+    pPolicy: String,
+    sPolicy: String,
+    dmcaPolicy: String,
+    contact: String
     
 });
 
