@@ -57,7 +57,6 @@ export class LoginComponent {
 
   isVerified(){
     var user = this.afAuth.auth.currentUser;
-    console.log(user.emailVerified);
     return user.emailVerified;
   }
 
