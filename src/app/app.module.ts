@@ -17,7 +17,8 @@ import { MembersComponent } from './members/members.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { CollectionComponent } from './collection/collection.component';
-import { PpdmcaComponent } from './ppdmca/ppdmca.component'
+import { PpdmcaComponent } from './ppdmca/ppdmca.component';
+import { ImageComponent } from './image/image.component'
 
 
 export const firebaseConfig = {
@@ -48,7 +49,8 @@ const appRoutes: Routes = [
     HomeComponent,
     AboutComponent,
     CollectionComponent,
-    PpdmcaComponent
+    PpdmcaComponent,
+    ImageComponent
   ],
   imports: [
     BrowserModule,
