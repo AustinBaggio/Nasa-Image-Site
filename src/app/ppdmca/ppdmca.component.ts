@@ -9,7 +9,8 @@ import 'rxjs/add/operator/map';
 })
 export class PpdmcaComponent implements OnInit {
   
-  url:string = 'https://lab3-austinbaggio.c9users.io/api/message'; // Get 10 random users
+  url:string = 'https://nasa-austinbaggio.c9users.io/api/message'; // Get 10 random users
+  
   data: any ={};
   resp
 

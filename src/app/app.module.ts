@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HttpModule } from '@angular/http';
+
 
 
 import { AppComponent } from './app.component';
@@ -21,7 +23,6 @@ import { PpdmcaComponent } from './ppdmca/ppdmca.component';
 import { ImageComponent } from './image/image.component'
 
 import { GeneralService } from './general.service'
-import { HttpModule } from '@angular/http/src/http_module';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBFLOiVEO0bjk8bnHBVIVHS2glbTE7p3Jk",
@@ -52,7 +53,6 @@ const appRoutes: Routes = [
     AboutComponent,
     CollectionComponent,
     PpdmcaComponent,
-    HttpModule,
     ImageComponent
   ],
   imports: [
@@ -60,7 +60,8 @@ const appRoutes: Routes = [
     AngularFireModule.initializeApp(firebaseConfig, "Nasa App"),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpModule
     
   ],
   providers: [GeneralService],
