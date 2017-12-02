@@ -1,6 +1,26 @@
+<!--
+<div class="container" *ngIf="afAuth.authState | async; let user; else showLoginButton">
+    <h3>Hello {{ user.displayName }}! </h3>
+    <button (click)="emailVerify()">Resend Verification Email</button>
+    <button (click)="logout()">Logout</button>
+  </div>
+  <ng-template #showLoginButton >
+      <h1>Hello {{ user.displayName }}! Please Verify your email</h1>
+      <button (click)="logout()">Logout</button>    
+  </ng-template>
+  -->
+    <div *ngIf="genServe.afAuth.authState | async; let user; else showLogin">
+      <p>Welcome: {{ user.email }}
+        <button (click)="genServe.globalLogout()">Logout</button>              
+      </p>   
+      
+    </div>
+    <ng-template #showLogin >
+      <a routerLink="/login">LOGIN</a>
+    </ng-template>
+    
 <ul>
   <li><a routerLink="/home">HOME</a></li>
-  <li><a routerLink="/login">LOGIN</a></li>
   <li><a routerLink="/about">ABOUT</a></li>
   <li><a routerLink="/policies">LEGAL</a></li>
 </ul>

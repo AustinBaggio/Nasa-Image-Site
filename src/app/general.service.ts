@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
+import { AngularFireAuth } from 'angularfire2/auth';
+import * as firebase from 'firebase/app';
 
 @Injectable()
 export class GeneralService {
   
 
-  constructor() { }
+  constructor(public afAuth: AngularFireAuth) { }
   userIn
 
   sanatization(text){
@@ -40,6 +42,11 @@ export class GeneralService {
     
     }
     return true
+  }
+
+  globalLogout(){
+    this.afAuth.auth.signOut();
+    
   }
   
 }

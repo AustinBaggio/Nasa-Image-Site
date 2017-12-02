@@ -53,14 +53,11 @@ export class LoginComponent {
   login() {
     this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   }
-  logout() {
-    this.isVerified();
-    this.afAuth.auth.signOut();
-    
-  }
+
 
   isVerified(){
     var user = this.afAuth.auth.currentUser;
+    console.log(user.emailVerified);
     return user.emailVerified;
   }
 
