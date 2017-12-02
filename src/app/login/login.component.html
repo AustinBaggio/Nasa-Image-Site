@@ -1,9 +1,12 @@
 <html>
 <div class="container" *ngIf="afAuth.authState | async; let user; else showLogin">
   <h1>Hello {{ user.displayName }}!</h1>
+  <button (click)="emailVerify()">Send Verification Email</button>
+  
+  
   <button (click)="logout()">Logout</button>
 </div>
-<ng-template #showLogin>
+<ng-template #showLogin >
     <h2>Login</h2>
     <button (click)="login()">Login with Google</button>
 
@@ -12,6 +15,7 @@
   Password: <input #passIn type="password" name="pass" value="password"><br>
   
   <button (click)="registerWithEmail(emailIn.value, passIn.value)">Register</button>
+  <button (click)="loginWithEmail(emailIn.value, passIn.value)">Log-In</button>
   
 </ng-template>
 </html>

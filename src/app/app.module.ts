@@ -20,6 +20,7 @@ import { CollectionComponent } from './collection/collection.component';
 import { PpdmcaComponent } from './ppdmca/ppdmca.component';
 import { ImageComponent } from './image/image.component'
 
+import { GeneralService } from './general.service'
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBFLOiVEO0bjk8bnHBVIVHS2glbTE7p3Jk",
@@ -60,7 +61,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes)
     
   ],
-  providers: [],
+  providers: [GeneralService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
