@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { GeneralService } from '../general.service';
 
 @Component({
   selector: 'app-ppdmca',
@@ -9,12 +10,12 @@ import 'rxjs/add/operator/map';
 })
 export class PpdmcaComponent implements OnInit {
   
-  url:string = 'https://nasa-austinbaggio.c9users.io/api/message'; // Get 10 random users
+  url:string = 'https://nasa-austinbaggio.c9users.io/api/message'; 
   
   data: any ={};
   resp
 
-  constructor(private http: Http) { 
+  constructor(private http: Http, public genServe:GeneralService) { 
     this.getStringData();
     this.getData();
   }
@@ -41,5 +42,26 @@ export class PpdmcaComponent implements OnInit {
   getSPolicy(){
     return (this.getLatest().sPolicy)
   }
+
+  saveAllPolicies(priv, sec, dmca, con){
+    const body = {
+      pPolicy: priv,
+      sPolicy: sec,
+      dmcaPolicy: dmca,
+      contact: con
+
+    }
+
+
+    this.http.post(this.url, body).subscribe(
+      (data:any) =>{
+        console.log(data)
+      }
+    );
+    alert("Changes Saved")
+    
+  }
+  
+
 
 }

@@ -22,11 +22,14 @@ export class LoginComponent {
     
  
     this.sanatizedE = this.genServe.sanatization(e);
-
+    
     if(this.checkInput(this.sanatizedE,p) == true){
       this.afAuth.auth.createUserWithEmailAndPassword(e, p)
+      .catch(
+        (err)=>{
+          alert(err)
+        })
     }
-    //this.emailVerify();
   }
   checkInput(a,b){
     return this.genServe.emailFormat(a) && this.genServe.passFormat(b)
@@ -44,7 +47,7 @@ export class LoginComponent {
       if( this.genServe.emailFormat(this.sanatizedE) == true){
         this.afAuth.auth.signInWithEmailAndPassword(e,p).catch(
           (err)=>{
-            alert("Login Failed. Check email and password")
+            alert(err)
           })
             
          

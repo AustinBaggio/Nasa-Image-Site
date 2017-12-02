@@ -46,7 +46,21 @@ export class GeneralService {
 
   globalLogout(){
     this.afAuth.auth.signOut();
-    
+    //location.reload();
   }
+
+  isAdmin(){
+    try{
+      var user = this.afAuth.auth.currentUser;
+      if (user.email == "admin@admin.admin")
+      {
+        return true;
+      }
+      return false;
+    }catch(err){
+    return false;
+    }
+  }
+
   
 }
