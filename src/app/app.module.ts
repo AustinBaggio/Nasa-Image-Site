@@ -21,6 +21,7 @@ import { PpdmcaComponent } from './ppdmca/ppdmca.component';
 import { ImageComponent } from './image/image.component'
 
 import { GeneralService } from './general.service'
+import { HttpModule } from '@angular/http/src/http_module';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBFLOiVEO0bjk8bnHBVIVHS2glbTE7p3Jk",
@@ -51,6 +52,7 @@ const appRoutes: Routes = [
     AboutComponent,
     CollectionComponent,
     PpdmcaComponent,
+    HttpModule,
     ImageComponent
   ],
   imports: [
