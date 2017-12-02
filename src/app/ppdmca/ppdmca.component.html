@@ -1,52 +1,18 @@
 
 <div class="container">
+  <button (click)='getSPolicy()'>get</button>
   <h2>Privacy Policy</h2>  
-    
-      We collect the following types of information: 
-    <br/><br/>
-    <ul>
-      <li>Your username, password and e-mail address when you register for an account</li>
-      <li>Profile information that you provide for your user profile (e.g., first and last name, phone number)</li> 
-      <li> User Content (e.g., photos, collections, and other materials) that you post to the Service</li>
-      <li>between you and our site. For example, we may send you Service-related emails (e.g., account verification, changes/updates to features of the Service, technical and security notices). 
-      Note that you may not opt out of Service-related e-mails</li>
-    </ul>
-    <br/>
+  <br/><br/>
 
-    In addition to some of the specific uses of information we describe in this Privacy Policy, we may use information that we receive to:
-    <br/> <br/>
-    <ul>
-      <li>help you efficiently access your information after you sign in</li>
-      <li>remember information so you will not have to re-enter it during your visit or the next time you visit the Service
-        provide, improve, test, and monitor the effectiveness of our Service</li>
-      <li> develop and test new products and features</li>
-    </ul>
-    <br/>
-    
-    3rd parties that have access to your data are :
-    <br/>
-    <ul>
-      <li>Google's Firebase for authentication and data services</li>
-    </ul>
-    <br/> <br/>
-    
-    Your data will not be sold unless this site is dossolved or taken over by a sale. 
+  {{ this.getLatest().pPolicy }}
 
 </div>
 
 <div class="container">
   <h2>Security Policy</h2>
+  <br/><br/>
+  {{ this.getLatest().sPolicy }}
   
-      The security of your profile is important to us 
-      
-      <br/><br/>
-      In addition to some of the specific uses of information we describe in the Privacy Policy:
-      <br/> <br/>
-      <ul>
-        <li>We strive to use modern encryption, protocols and tools to protect your profile and your session</li>
-        <li>We strive to protect your user data that we collect using modern databases developed extensively alongside security professionals</li>
-      </ul>
- 
 
 </div>
 
@@ -55,31 +21,14 @@
   <h2>DMCA and Takedown Policy</h2>
   <br/><br/>
 
- Here are the basic steps in the process.
-<ol>
-<li>
-  Copyright Owner Investigates. A copyright owner should always conduct an initial investigation to confirm both (a) that they own the copyright to an original work and (b) that the content on this site is unauthorized and infringing.
-</li>
-<li>
-  Copyright Owner Sends A Notice. After conducting an investigation, a copyright owner prepares and sends a takedown notice to our site. Assuming the takedown notice is sufficiently detailed according to the statutory requirements we will post the notice to the affected user.
-</li>
-<li>
-  We Ask the user to Make Changes, and give the user approximately 24 hours to delete or modify the content specified in the notice. We'll notify the copyright owner if and when we give the user a chance to make changes.
-</li>
-<li>
-  If they don't, we will disable the user's account. If the user notifies us that they made changes, we will verify that the changes have been made and then notify the copyright owner.
-</li>
-<li>
-  Copyright Owner Revises or Retracts the Notice. If the user makes changes, the copyright owner must review them and renew or revise their takedown notice if the changes are insufficient. We will not take any further action unless the copyright owner contacts us to either renew the original takedown notice or submit a revised one. If the copyright owner is satisfied with the changes, they may either submit a formal retraction or else do nothing. We will interpret silence longer than two weeks as an implied retraction of the takedown notice.
-</li>
-<li>
-  We May Disable Access to the Content. We will disable a user's account if: the user has not made any changes after being given an opportunity to do so or the copyright owner has renewed their takedown notice after the user had a chance to make changes. If the copyright owner chooses instead to revise the notice, we will go back and repeat the process as if the revised notice were a new notice.
-</li>
-<li>
-  User May Send A Counter Notice. We encourage users who have had content disabled to consult with a lawyer about their options. If a user believes that their content was disabled as a result of a mistake or misidentification, they may send us a counter notice. As with the original notice, we will make sure that the counter notice is sufficiently detailed. If it is, we will pass the notice back to the copyright owner by sending them the post.
-</li>
-<li>
-  Copyright Owner May File a Legal Action. If a copyright owner wishes to keep the content disabled after receiving a counter notice, they will need to initiate a legal action seeking a court order to restrain the user from engaging in infringing activity relating to the content on our site. 
-</li>
-</ol>
+  {{ this.getLatest().dmcaPolicy }}
+  
 </div>
+
+<div class="container">
+    <h2>DMCA and Takedown Contact</h2>
+    <br/><br/>
+  
+    {{ this.getLatest().contact }}
+    
+  </div>

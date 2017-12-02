@@ -28,8 +28,18 @@ export class PpdmcaComponent implements OnInit {
   }
   getStringData(){
     this.getData().subscribe(data=>{
-      console.log(data);
       this.data=data;
+      console.log(this.data[this.data.length-1]);
+      
     })
   }
+
+  getLatest(){
+    return (this.data[this.data.length-1]);
+  }
+
+  getSPolicy(){
+    return (this.getLatest().sPolicy)
+  }
+
 }
