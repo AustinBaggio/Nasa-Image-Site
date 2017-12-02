@@ -22,12 +22,15 @@ export class LoginComponent {
     
  
     this.sanatizedE = this.genServe.sanatization(e);
-    if( this.genServe.emailFormat(this.sanatizedE) == true){
+
+    if(this.checkInput(this.sanatizedE,p) == true){
       this.afAuth.auth.createUserWithEmailAndPassword(e, p)
     }
     //this.emailVerify();
   }
-  
+  checkInput(a,b){
+    return this.genServe.emailFormat(a) && this.genServe.passFormat(b)
+  }
   emailVerify(){
     var user = this.afAuth.auth.currentUser;
     console.log("Sending Verification to: ", user.email);
@@ -36,16 +39,29 @@ export class LoginComponent {
 
 
   loginWithEmail(e,p){
-    this.sanatizedE = this.genServe.sanatization(e);
-    if( this.genServe.emailFormat(this.sanatizedE) == true){
-      this.afAuth.auth.signInWithEmailAndPassword(e,p);
-    }
+
+      this.sanatizedE = this.genServe.sanatization(e);
+      if( this.genServe.emailFormat(this.sanatizedE) == true){
+        this.afAuth.auth.signInWithEmailAndPassword(e,p).catch(
+          (err)=>{
+            alert("Login Failed. Check email and password")
+          })
+            
+         
+      }
   }
   login() {
     this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   }
   logout() {
+    this.isVerified();
     this.afAuth.auth.signOut();
+    
+  }
+
+  isVerified(){
+    var user = this.afAuth.auth.currentUser;
+    return user.emailVerified;
   }
 
   

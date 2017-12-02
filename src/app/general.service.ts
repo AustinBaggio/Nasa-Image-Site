@@ -20,11 +20,26 @@ export class GeneralService {
       var atpos = text.indexOf('@');
 
       var dotpos = text.lastIndexOf(".");
+      if (text.length<=0){
+        alert("Enter an email");
+        return (false);
+      }
       if (atpos<1 || dotpos<atpos+2 || dotpos+2>=text.length) {
           alert("Not a valid e-mail address");
           return (false);
       }
+
+      
       return (true);
+  }
+
+  passFormat(text){
+    if (text.length<=6){
+      alert("Enter a Password greater than 6 characters");
+      return (false);
+    
+    }
+    return true
   }
   
 }
