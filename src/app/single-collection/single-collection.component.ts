@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SingleCollectionService } from '../single-collection.service';
 
 @Component({
   selector: 'app-single-collection',
@@ -13,8 +14,8 @@ export class SingleCollectionComponent implements OnInit {
   owner
   imageUrls
   rating
-  
-  constructor() { }
+
+  constructor(public sCol: SingleCollectionService) { }
 
   ngOnInit() {
   }

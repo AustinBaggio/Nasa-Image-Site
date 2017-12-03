@@ -26,6 +26,8 @@ import { GeneralService } from './general.service';
 import { ApiCallService } from './api-call.service';
 import { CollectionLoadService } from './collection-load.service';
 import { SingleCollectionComponent } from './single-collection/single-collection.component';
+import { SingleCollectionService } from './single-collection.service';
+import { UserCollectionComponent } from './user-collection/user-collection.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBFLOiVEO0bjk8bnHBVIVHS2glbTE7p3Jk",
@@ -42,6 +44,8 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'about', component: AboutComponent},
   { path: 'policies', component: PpdmcaComponent},
+  { path: 'single-collection', component: SingleCollectionComponent},
+  { path: 'user-collection', component: UserCollectionComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full'}, //default is home
   { path: '**', redirectTo: '/home', pathMatch: 'full'}, //any that arent defined redirect home
 
@@ -59,7 +63,8 @@ const appRoutes: Routes = [
     PpdmcaComponent,
     ImageComponent,
     DmcaAdminToolComponent,
-    SingleCollectionComponent
+    SingleCollectionComponent,
+    UserCollectionComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +75,7 @@ const appRoutes: Routes = [
     HttpModule
     
   ],
-  providers: [GeneralService, ApiCallService, CollectionLoadService],
+  providers: [GeneralService, ApiCallService, CollectionLoadService, SingleCollectionService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

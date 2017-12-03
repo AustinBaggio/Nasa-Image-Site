@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { CollectionLoadService } from '../collection-load.service';
 import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { SingleCollectionService } from '../single-collection.service';
 import { GeneralService } from '../general.service';
+
 
 @Component({
   selector: 'app-collection',
@@ -15,7 +17,7 @@ export class CollectionComponent implements OnInit {
   colTen
 
 
-  constructor(public colLoad:CollectionLoadService) { 
+  constructor(public colLoad:CollectionLoadService, public sCol:SingleCollectionService, public genServe:GeneralService) { 
     colLoad.getStringData(this.url);
     colLoad.getData(this.url);
     this.colTen = this.sortByRating()
@@ -39,7 +41,6 @@ export class CollectionComponent implements OnInit {
       }
     
     }
-    console.log(a);
     return a;
 
   }
@@ -47,12 +48,10 @@ export class CollectionComponent implements OnInit {
     var a = this.colTen
     var l = a.length
     for (var i=0;i<a.length;i++){
-      console.log("before: "+a.length)
       
       if (a[i].visability == false){
         a.splice(i,1)
       }
-      console.log("after: "+a.length)
 
     }
     while(a.length>10){
