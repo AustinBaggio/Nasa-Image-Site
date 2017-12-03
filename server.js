@@ -47,9 +47,8 @@ app.use(express.static(path.join(__dirname + '/static')));
 router.get('/', function(req, res) {
     res.json({message: 'Welcome'});
 });
-
 // more routes for our API will happen here
-
+//Routes for DCMA Notices
 router.route('/dmcaNotice')
 
     // create a message (accessed at POST http://localhost:8080/api/message)
