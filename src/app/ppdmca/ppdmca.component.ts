@@ -59,7 +59,7 @@ export class PpdmcaComponent implements OnInit {
       }
     );
     alert("Changes Saved")
-    
+    location.reload();
   }
   
 

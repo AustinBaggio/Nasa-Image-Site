@@ -22,7 +22,15 @@ export class ApiCallService {
   }
 
   getLatest(){
+    console.log(this.data);
+    
     return (this.data[this.data.length-1]);
   }
 
+
+  getAll(){
+    return this.data
+  }
+
+  
 }

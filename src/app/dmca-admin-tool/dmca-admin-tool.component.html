@@ -30,10 +30,25 @@
       </li>
       </ol>
   
-
   <h2>Active Cases</h2>
   <br/><br/>
-
-  {{ api.getLatest().owner}}
-
+  <table border="1">
+    <tr>
+      <th>Owner</th>
+      <th>Defendant</th>
+      <th>collectionURL</th>
+      <th>Sent Notice</th>
+      <th>Disputed</th>
+      
+    </tr>
+    <tr *ngFor='let a of api.data;'>
+      <td>{{ a.owner }}</td>
+      <td>{{a.defendant}}</td>
+      <td>{{a.collectionURL}}</td>
+      <td>{{a.sentNotice}}</td>
+      <td>{{a.dispute}}</td>
+    </tr>
+  
+  </table>   
+     
 </div>

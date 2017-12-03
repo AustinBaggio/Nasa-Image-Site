@@ -23,6 +23,7 @@ import { PpdmcaComponent } from './ppdmca/ppdmca.component';
 import { ImageComponent } from './image/image.component'
 import { DmcaAdminToolComponent } from './dmca-admin-tool/dmca-admin-tool.component'
 import { GeneralService } from './general.service';
+import { ApiCallService } from './api-call.service';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBFLOiVEO0bjk8bnHBVIVHS2glbTE7p3Jk",
@@ -66,7 +67,7 @@ const appRoutes: Routes = [
     HttpModule
     
   ],
-  providers: [GeneralService],
+  providers: [GeneralService, ApiCallService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

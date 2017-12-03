@@ -24,5 +24,8 @@ export class DmcaAdminToolComponent implements OnInit {
   ngOnInit() {
   }
 
+  getData(){
+   return this.data 
+  }
 
 }

@@ -7,7 +7,7 @@ var DMCANoticesSchema   = new Schema({
     defendant: String,
     collectionURL: String,
     sentNotice: Boolean,
-    dispute: Boolean
+    dispute: String
     
 });
 
