@@ -1,3 +1,6 @@
+/* THis component is used to display the privacy, security and DMCA Policy
+It also acts as an admin tool for changing them if you are the admin
+ */
 import { Component, OnInit } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
@@ -9,13 +12,14 @@ import { GeneralService } from '../general.service';
   styleUrls: ['./ppdmca.component.css']
 })
 export class PpdmcaComponent implements OnInit {
-  
-  url:string = 'https://nasa-austinbaggio.c9users.io/api/message'; 
-  
-  data: any ={};
-  resp
 
-  constructor(private http: Http, public genServe:GeneralService) { 
+  //API endpoint
+  url: string = 'https://nasa-austinbaggio.c9users.io/api/message';
+
+  //local store of data for manipulation
+  data: any = {};
+
+  constructor(private http: Http, public genServe: GeneralService) {
     this.getStringData();
     this.getData();
   }
@@ -23,27 +27,25 @@ export class PpdmcaComponent implements OnInit {
   ngOnInit() {
   }
 
-  getData(){
+  //simple get request
+  getData() {
     return this.http.get(this.url)
       .map((res: Response) => res.json())
   }
-  getStringData(){
-    this.getData().subscribe(data=>{
-      this.data=data;
-      console.log(this.data[this.data.length-1]);
-      
+  getStringData() {
+    this.getData().subscribe(data => {
+      this.data = data;
+      console.log(this.data[this.data.length - 1]);
+
     })
   }
-
-  getLatest(){
-    return (this.data[this.data.length-1]);
+  //helper function to get the latest of any of the policies
+  getLatest() {
+    return (this.data[this.data.length - 1]);
   }
 
-  getSPolicy(){
-    return (this.getLatest().sPolicy)
-  }
-
-  saveAllPolicies(priv, sec, dmca, con){
+  //post function
+  saveAllPolicies(priv, sec, dmca, con) {
     const body = {
       pPolicy: priv,
       sPolicy: sec,
@@ -54,14 +56,14 @@ export class PpdmcaComponent implements OnInit {
 
 
     this.http.post(this.url, body).subscribe(
-      (data:any) =>{
+      (data: any) => {
         console.log(data)
       }
     );
     alert("Changes Saved")
     location.reload();
   }
-  
+
 
 
 }

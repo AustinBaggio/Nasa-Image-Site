@@ -13,14 +13,10 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { environment } from '../environments/environment';
 import { LoginComponent } from './login/login.component';
-import { EmailComponent } from './email/email.component';
-import { SignupComponent } from './signup/signup.component';
-import { MembersComponent } from './members/members.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { CollectionComponent } from './collection/collection.component';
 import { PpdmcaComponent } from './ppdmca/ppdmca.component';
-import { ImageComponent } from './image/image.component'
 import { DmcaAdminToolComponent } from './dmca-admin-tool/dmca-admin-tool.component'
 import { GeneralService } from './general.service';
 import { ApiCallService } from './api-call.service';
@@ -54,14 +50,10 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     LoginComponent,
-    EmailComponent,
-    SignupComponent,
-    MembersComponent,
     HomeComponent,
     AboutComponent,
     CollectionComponent,
     PpdmcaComponent,
-    ImageComponent,
     DmcaAdminToolComponent,
     SingleCollectionComponent,
     UserCollectionComponent

@@ -21,14 +21,21 @@ export class CollectionLoadService {
   }
   getStringData(url) {
     this.getData(url).subscribe(data => {
-      this.data = data;
-      console.log(this.data)
+      this.data = this.clean(data);
     })
     this.getData(url).subscribe(data => {
       this.dataS = this.sortByRating(data);
-      console.log(this.dataS)
-      
+
     })
+  }
+  clean(a) {
+    for (var i = 0; i < a.length; i++) {
+
+      if (typeof a[i].rating === 'undefined') {
+        a[i].rating = 0;
+      }
+    }
+    return a;
   }
   sortByRating(a) {
 

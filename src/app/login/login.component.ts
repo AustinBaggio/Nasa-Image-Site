@@ -1,3 +1,8 @@
+/* This component handles the logging in and out of users. Its template changes based off of authentication status 
+Google's firebase was used for authentication since they provide very simple tools and an attractive console 
+at console.firebase.google.com
+*/
+
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -10,59 +15,61 @@ import { GeneralService } from '../general.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  constructor(public afAuth: AngularFireAuth, public genServe:GeneralService) {
-    
+  constructor(public afAuth: AngularFireAuth, public genServe: GeneralService) {
+
   }
+//registration
+  registerWithEmail(e, p) { 
+    //sanatize data
+    e = this.genServe.sanatization(e);
 
-  sanatizedE:string = "";
-  sanatizedP:string = "";
-  a = 0;
-
-  registerWithEmail(e, p){
-    
- 
-    this.sanatizedE = this.genServe.sanatization(e);
-    
-    if(this.checkInput(this.sanatizedE,p) == true){
+    //checks input of username and password
+    if (this.checkInput(e, p) == true) {
+      //call to firebase registration
       this.afAuth.auth.createUserWithEmailAndPassword(e, p)
-      .catch(
-        (err)=>{
+        .catch(
+        (err) => {
+          //display error if there is one
           alert(err)
         })
     }
   }
-  checkInput(a,b){
+
+  //helper function to check the input format using the general service helper
+  checkInput(a, b) {
     return this.genServe.emailFormat(a) && this.genServe.passFormat(b)
   }
-  emailVerify(){
+
+  //verifies email using firebase, they send the email
+  emailVerify() {
     var user = this.afAuth.auth.currentUser;
     console.log("Sending Verification to: ", user.email);
     user.sendEmailVerification();
   }
 
+  //email login flow
+  loginWithEmail(e, p) {
+    //sanitize & chekc format
+    e = this.genServe.sanatization(e);
+    if (this.genServe.emailFormat(e) == true) {
+      //signin using firebase, display any error
+      this.afAuth.auth.signInWithEmailAndPassword(e, p).catch(
+        (err) => {
+          alert(err)
+        })
 
-  loginWithEmail(e,p){
 
-      this.sanatizedE = this.genServe.sanatization(e);
-      if( this.genServe.emailFormat(this.sanatizedE) == true){
-        this.afAuth.auth.signInWithEmailAndPassword(e,p).catch(
-          (err)=>{
-            alert(err)
-          })
-            
-         
-      }
+    }
   }
+  //google account login
   login() {
     this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   }
 
-
-  isVerified(){
+//returns whether or not there is a user logged in
+  isVerified() {
     var user = this.afAuth.auth.currentUser;
     return user.emailVerified;
   }
 
-  
-  
 }

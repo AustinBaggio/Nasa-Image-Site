@@ -1,3 +1,6 @@
+/* This component is for a single isntance of a collection
+it houses the collections images and other attributes for display and manipulation by the user */
+
 import { Component, OnInit } from '@angular/core';
 import { SingleCollectionService } from '../single-collection.service';
 

@@ -12,14 +12,19 @@ import { GeneralService } from '../general.service';
   styleUrls: ['./collection.component.css']
 })
 export class CollectionComponent implements OnInit {
+  //api URL for collections
   url:string = 'https://nasa-austinbaggio.c9users.io/api/collection'; 
   
+  //local collection of data for testing
   colTen
 
 
   constructor(public colLoad:CollectionLoadService, public sCol:SingleCollectionService, public genServe:GeneralService) { 
+    //initialized the data from the api call service
     colLoad.getStringData(this.url);
     colLoad.getData(this.url);
+
+    //testing
     this.colTen = colLoad.data;
     console.log(this.colTen)
     

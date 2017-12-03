@@ -1,3 +1,4 @@
+/* Simply acts as the home page container for other components */
 import { Component, OnInit } from '@angular/core';
 
 @Component({
