@@ -26,8 +26,6 @@ app.use(bodyParser.json());
 var port = process.env.PORT || 8080;        // set our port
 
 
-
-
 // ROUTES FOR OUR API
 // =============================================================================
 
@@ -47,10 +45,10 @@ app.use(express.static(path.join(__dirname + '/static')));
 router.get('/', function(req, res) {
     res.json({message: 'Welcome'});
 });
+
 // more routes for our API will happen here
 //Routes for DCMA Notices
-router.route('/dmcaNotice')
-
+router.route('/dmcaNotice') 
     // create a message (accessed at POST http://localhost:8080/api/message)
     .post(function(req, res) {
     
