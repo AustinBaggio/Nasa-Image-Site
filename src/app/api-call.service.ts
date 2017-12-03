@@ -27,6 +27,25 @@ export class ApiCallService {
     return (this.data[this.data.length-1]);
   }
 
+  addNewDispute(own, def, col, url){
+    const body = {
+      owner: own,
+      defendant: def,
+      collectionURL: col,
+      sentNotice: 0,
+      dispute: "None"
+
+    }
+
+
+    this.http.post(url, body).subscribe(
+      (data:any) =>{
+        console.log(data)
+      }
+    );
+    alert("Added to log")
+    location.reload();
+  }
 
   getAll(){
     return this.data

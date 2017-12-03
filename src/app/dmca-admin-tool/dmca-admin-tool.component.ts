@@ -28,4 +28,9 @@ export class DmcaAdminToolComponent implements OnInit {
    return this.data 
   }
 
+  addNotice(own, def, col){
+    this.api.addNewDispute(own, def, col, this.url)
+
+  }
+
 }

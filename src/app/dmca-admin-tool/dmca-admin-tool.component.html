@@ -1,5 +1,5 @@
-
-    <div class="container">
+<div class="container" *ngIf="genServe.isAdmin() == true ; else showNothing">
+    
         <h2>DMCA and Takedown Policy</h2>
         <br/><br/>
       
@@ -42,13 +42,43 @@
       
     </tr>
     <tr *ngFor='let a of api.data;'>
-      <td>{{ a.owner }}</td>
+      <td>{{a.owner }}</td>
       <td>{{a.defendant}}</td>
       <td>{{a.collectionURL}}</td>
       <td>{{a.sentNotice}}</td>
       <td>{{a.dispute}}</td>
     </tr>
+
+    <button></button>
   
   </table>   
      
-</div>
+
+
+    <div> Add Takedown Notice
+        <div class="container">
+            <h2>Owner</h2>  
+            <br/><br/>
+
+            <textarea #own class="tArea" rows="2" cols="50"></textarea>
+            <br/>
+          </div>
+          
+          <div class="container">
+            <h2>Defendant</h2>
+            <br/><br/>
+            <textarea #def class="tArea" rows="2" cols="50"></textarea>
+            <br/>
+          </div>
+          
+          <div class="container">
+            <h2>collectionURL</h2>
+            <br/><br/>
+            <textarea #col class="tArea" rows="2" cols="50"></textarea>
+            <br/>
+          </div>
+          
+          
+          <button (click)='addNotice(own.value, def.value, col.value)'>Add Dispute</button> 
+          
+        </div>
