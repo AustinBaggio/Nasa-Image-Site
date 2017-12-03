@@ -23,5 +23,8 @@
   <li><a routerLink="/home">HOME</a></li>
   <li><a routerLink="/about">ABOUT</a></li>
   <li><a routerLink="/policies">LEGAL</a></li>
+      
+  <li *ngIf="genServe.isAdmin() == true ;"><a  routerLink="/dmca-admin-tool">DMCA ADMIN TOOL</a></li>
+
 </ul>
 <router-outlet></router-outlet>

@@ -21,8 +21,8 @@ import { AboutComponent } from './about/about.component';
 import { CollectionComponent } from './collection/collection.component';
 import { PpdmcaComponent } from './ppdmca/ppdmca.component';
 import { ImageComponent } from './image/image.component'
-
-import { GeneralService } from './general.service'
+import { DmcaAdminToolComponent } from './dmca-admin-tool/dmca-admin-tool.component'
+import { GeneralService } from './general.service';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBFLOiVEO0bjk8bnHBVIVHS2glbTE7p3Jk",
@@ -35,6 +35,7 @@ export const firebaseConfig = {
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent},
+  { path: 'dmca-admin-tool', component: DmcaAdminToolComponent},
   { path: 'login', component: LoginComponent},
   { path: 'about', component: AboutComponent},
   { path: 'policies', component: PpdmcaComponent},
@@ -53,7 +54,8 @@ const appRoutes: Routes = [
     AboutComponent,
     CollectionComponent,
     PpdmcaComponent,
-    ImageComponent
+    ImageComponent,
+    DmcaAdminToolComponent
   ],
   imports: [
     BrowserModule,
