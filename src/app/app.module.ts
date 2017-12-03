@@ -3,14 +3,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpModule } from '@angular/http';
 
-
-
 import { AppComponent } from './app.component';
 
+//firebase modules
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
+//component and service modules
 import { environment } from '../environments/environment';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
@@ -25,6 +25,7 @@ import { SingleCollectionComponent } from './single-collection/single-collection
 import { SingleCollectionService } from './single-collection.service';
 import { UserCollectionComponent } from './user-collection/user-collection.component';
 
+//config file to connect to firebase
 export const firebaseConfig = {
   apiKey: "AIzaSyBFLOiVEO0bjk8bnHBVIVHS2glbTE7p3Jk",
   authDomain: "lab05-c9e9b.firebaseapp.com",
@@ -34,6 +35,7 @@ export const firebaseConfig = {
   messagingSenderId: "414705193528"
 };
 
+//routes
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'dmca-admin-tool', component: DmcaAdminToolComponent},

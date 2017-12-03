@@ -10,6 +10,8 @@ import { GeneralService } from './general.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  //gives access to firebase's firestore and the service GeneralService
   items: Observable<any[]>;
   constructor(db: AngularFirestore, public genServe: GeneralService) {
     this.items = db.collection('items').valueChanges();
