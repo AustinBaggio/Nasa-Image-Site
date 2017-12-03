@@ -6,6 +6,7 @@ var mongoose   = require('mongoose');
 mongoose.connect('mongodb://localhost/users_test'); // connect to our database
 var Message     = require('./src/app/message');
 var Notice     = require('./src/app/dmcaNotices');
+var Dispute     = require('./src/app/dispute');
 
 // call the packages we need
 var express    = require('express');        // call express
@@ -57,7 +58,7 @@ router.route('/dmcaNotice')
         notice.timeStamp = Date.now();  // set the message timestamp (comes from the request)
         notice.owner = req.body.owner;  
         notice.defendant = req.body.defendant; 
-        notice.collectionURL = req.body.collectionURL
+        notice.collectionURL = req.body.collectionURL;
         notice.sentNotice = req.body.sentNotice;  
         notice.dispute = req.body.dispute;
         
@@ -77,6 +78,36 @@ router.route('/dmcaNotice')
                 res.send(err);
 
             res.json(notice);
+        });
+    });
+
+//Routes for Disputes
+router.route('/disputes') 
+    // create a message (accessed at POST http://localhost:8080/api/message)
+    .post(function(req, res) {
+    
+        console.log(req.body);
+        var dispute = new Dispute();      // create a new instance of the message model
+        dispute.timeStamp = Date.now();  // set the message timestamp (comes from the request)
+        dispute.owner = req.body.owner;  
+        dispute.dispute = req.body.dispute;
+        
+        // save the message and check for errors
+        dispute.save(function(err) {
+            if (err)
+                res.send(err);
+
+            res.json({ message: 'Dispute Posted' });
+        });
+
+    })
+    
+    .get(function(req, res) {
+        Dispute.find(function(err, dispute) {
+            if (err)
+                res.send(err);
+
+            res.json(dispute);
         });
     });
 
