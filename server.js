@@ -5,6 +5,8 @@
 var mongoose   = require('mongoose');
 mongoose.connect('mongodb://localhost/users_test'); // connect to our database
 var Message     = require('./src/app/message');
+var Notice     = require('./src/app/dmcaNotices');
+
 // call the packages we need
 var express    = require('express');        // call express
 var app        = express();                 // define our app using express
@@ -20,6 +22,7 @@ var path = require("path")
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+
 var port = process.env.PORT || 8080;        // set our port
 
 
@@ -32,6 +35,8 @@ var router = express.Router();              // get an instance of the express Ro
 app.set('view engine','ejs');
 // middleware to use for all requests
 router.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     // do logging
     console.log('Something is happening.');
     next(); // make sure we go to the next routes and don't stop here
@@ -44,6 +49,39 @@ router.get('/', function(req, res) {
 });
 
 // more routes for our API will happen here
+
+router.route('/dmcaNotice')
+
+    // create a message (accessed at POST http://localhost:8080/api/message)
+    .post(function(req, res) {
+    
+        console.log(req.body);
+        var notice = new Notice();      // create a new instance of the message model
+        notice.timeStamp = Date.now();  // set the message timestamp (comes from the request)
+        notice.owner = req.body.owner;  
+        notice.defendant = req.body.defendant; 
+        notice.collectionURL = req.body.collectionURL
+        notice.sentNotice = req.body.sentNotice;  
+        notice.dispute = req.body.dispute;
+        
+        // save the message and check for errors
+        notice.save(function(err) {
+            if (err)
+                res.send(err);
+
+            res.json({ message: 'Notice Posted' });
+        });
+
+    })
+    
+    .get(function(req, res) {
+        Notice.find(function(err, notice) {
+            if (err)
+                res.send(err);
+
+            res.json(notice);
+        });
+    });
 
 // on routes that end in /message
 // ----------------------------------------------------
@@ -69,15 +107,30 @@ router.route('/message')
         });
 
     })
-    
-    .get(function(req, res) {
-        Message.find(function(err, message) {
+        .delete(function(req, res) {
+        Notice.remove({
+            _id: req.params.notice_id
+        }, function(err, notice) {
             if (err)
                 res.send(err);
 
-            res.json(message);
+            res.json({ message: 'Successfully deleted' });
+        });
+    })
+    
+
+    
+    router.route('/bears/:bear_id')
+
+    // get the bear with that id (accessed at GET http://localhost:8080/api/bears/:bear_id)
+    .get(function(req, res) {
+        Notice.findById(req.params.notice_id, function(err, notice) {
+            if (err)
+                res.send(err);
+            res.json(notice);
         });
     });
+
 
 // on routes that end in /message/:messagecount
 // ----------------------------------------------------
