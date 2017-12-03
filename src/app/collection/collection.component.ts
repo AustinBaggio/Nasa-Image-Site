@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CollectionLoadService } from '../collection-load.service';
 
 @Component({
   selector: 'app-collection',
@@ -6,14 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./collection.component.css']
 })
 export class CollectionComponent implements OnInit {
-  /*
-  imageURL
-  rating
-  owner
-  
-  */
 
-  constructor() { }
+  name
+  description
+  visability
+  owner
+  imageUrls
+  rating
+
+
+  constructor(public colLoad:CollectionLoadService) { 
+    
+  }
 
   ngOnInit() {
   }
