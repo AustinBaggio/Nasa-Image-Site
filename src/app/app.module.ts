@@ -24,6 +24,8 @@ import { ImageComponent } from './image/image.component'
 import { DmcaAdminToolComponent } from './dmca-admin-tool/dmca-admin-tool.component'
 import { GeneralService } from './general.service';
 import { ApiCallService } from './api-call.service';
+import { CollectionLoadService } from './collection-load.service';
+import { SingleCollectionComponent } from './single-collection/single-collection.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBFLOiVEO0bjk8bnHBVIVHS2glbTE7p3Jk",
@@ -56,7 +58,8 @@ const appRoutes: Routes = [
     CollectionComponent,
     PpdmcaComponent,
     ImageComponent,
-    DmcaAdminToolComponent
+    DmcaAdminToolComponent,
+    SingleCollectionComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +70,7 @@ const appRoutes: Routes = [
     HttpModule
     
   ],
-  providers: [GeneralService, ApiCallService],
+  providers: [GeneralService, ApiCallService, CollectionLoadService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

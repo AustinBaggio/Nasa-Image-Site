@@ -6,36 +6,36 @@ import { GeneralService } from './general.service';
 @Injectable()
 export class ApiCallService {
 
-  constructor(private http: Http,) { }
+  constructor(private http: Http, ) { }
   data
   disputeData
 
-  getData(url){
+  getData(url) {
     return this.http.get(url)
       .map((res: Response) => res.json())
   }
-  getStringData(url){
-    this.getData(url).subscribe(data=>{
-      this.data=data;
-      console.log(this.data[this.data.length-1]);
-      
+  getStringData(url) {
+    this.getData(url).subscribe(data => {
+      this.data = data;
+      console.log(this.data[this.data.length - 1]);
+
     })
   }
-  getDisputeData(url){
-    this.getData(url).subscribe(data=>{
-      this.disputeData=data;
-      console.log(this.data[this.data.length-1]);
-      
+  getDisputeData(url) {
+    this.getData(url).subscribe(data => {
+      this.disputeData = data;
+      console.log(this.data[this.data.length - 1]);
+
     })
   }
 
-  getLatest(){
+  getLatest() {
     console.log(this.data);
-    
-    return (this.data[this.data.length-1]);
+
+    return (this.data[this.data.length - 1]);
   }
 
-  addNewNotice(own, def, col, url){
+  addNewNotice(own, def, col, url) {
     const body = {
       owner: own,
       defendant: def,
@@ -47,7 +47,7 @@ export class ApiCallService {
 
 
     this.http.post(url, body).subscribe(
-      (data:any) =>{
+      (data: any) => {
         console.log(data)
       }
     );
@@ -55,29 +55,29 @@ export class ApiCallService {
     location.reload();
   }
 
-  addNewDispute(own, disp, url){
+  addNewDispute(own, disp, url) {
 
-      const body = {
-        owner: own,
-        dispute: disp
-  
+    const body = {
+      owner: own,
+      dispute: disp
+
+    }
+
+
+    this.http.post(url, body).subscribe(
+      (data: any) => {
+        console.log(data)
       }
-  
-  
-      this.http.post(url, body).subscribe(
-        (data:any) =>{
-          console.log(data)
-        }
-      );
-      alert("Added to log")
-      location.reload();
-    
+    );
+    alert("Added to log")
+    location.reload();
+
   }
 
 
-  getAll(){
+  getAll() {
     return this.data
   }
 
-  
+
 }
