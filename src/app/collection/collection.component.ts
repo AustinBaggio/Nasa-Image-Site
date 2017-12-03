@@ -20,15 +20,18 @@ export class CollectionComponent implements OnInit {
   constructor(public colLoad:CollectionLoadService, public sCol:SingleCollectionService, public genServe:GeneralService) { 
     colLoad.getStringData(this.url);
     colLoad.getData(this.url);
-    this.colTen = this.sortByRating()
-    this.colTen = this.tenPublic()
+    
   }
 
   ngOnInit() {
   }
+   
+  sortTen(a){
+    this.sortByRating(a);
+    return a;
+  }
 
-  sortByRating(){
-    var a = this.colLoad.data
+  sortByRating(a){
     var outer, inner;
     //bubble sort by rating
     for (outer=a.length-1; outer>0; outer--){

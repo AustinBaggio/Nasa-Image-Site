@@ -22,13 +22,15 @@
         <tr>
             <th>Title</th>
             <th>Ranking</th>
-
+            <th>Visability</th>
+            
         </tr>
-        <tr *ngFor='let a of this.colTen;'>
+        <tr *ngFor='let a of colLoad.dataS;'>
             <td>
                 <button routerLink="/single-collection" (click)='sCol.showSingleCollection(a._id)'>{{a.name}}</button>
             </td>
             <td>{{a.rating}}</td>
+            <td>{{a.visability}}</td>
         </tr>
     </table>
 </ng-template>

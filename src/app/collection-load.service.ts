@@ -6,6 +6,7 @@ import { GeneralService } from './general.service';
 @Injectable()
 export class CollectionLoadService {
   data
+  dataS
   defaultURL = "https://nasa-austinbaggio.c9users.io/api/collection"
   constructor(private http: Http, ) {
 
@@ -21,11 +22,45 @@ export class CollectionLoadService {
   getStringData(url) {
     this.getData(url).subscribe(data => {
       this.data = data;
-
+      this.dataS = this.sortByRating(data);
     })
   }
+  sortByRating(a) {
 
-  postCollection(name,desc,vis,own){
+    for (var i = 0; i < a.length; i++) {
+
+      if (typeof a[i].rating === 'undefined') {
+        a[i].rating = 0;
+      }
+      if (a[i].visability === false) {
+        a.splice(i, 1)
+        i--;
+      }
+      if (a.length > 10) {
+        a.splice(a.length - 1, 1)
+      }
+
+    }
+
+
+    console.log(a);
+    var outer, inner;
+    //bubble sort by rating
+    for (outer = a.length - 1; outer > 0; outer--) {
+      for (inner = 0; inner < outer; inner++) {
+        if (a[inner].rating < a[inner + 1].rating) {
+          var temp = a[inner];
+          a[inner] = a[inner + 1];
+          a[inner + 1] = temp;
+        }
+      }
+
+    }
+    return a;
+
+  }
+
+  postCollection(name, desc, vis, own) {
     const body = {
       name: name,
       descript: desc,
@@ -42,7 +77,7 @@ export class CollectionLoadService {
     );
     alert("Collection Added")
     location.reload();
-    
+
   }
 
 
