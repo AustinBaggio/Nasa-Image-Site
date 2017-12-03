@@ -12,13 +12,18 @@ import { ApiCallService } from '../api-call.service';
 export class DmcaAdminToolComponent implements OnInit {
 
   url:string = 'https://nasa-austinbaggio.c9users.io/api/dmcaNotice'; 
+  urlDispute:string = 'https://nasa-austinbaggio.c9users.io/api/disputes'; 
   
   data: any ={};
+  disputeData: any={}
   
 
   constructor(private http: Http, public genServe:GeneralService, public api:ApiCallService) { 
     api.getStringData(this.url);
     api.getData(this.url);
+
+    api.getDisputeData(this.urlDispute);
+    api.getData(this.urlDispute);
   }
   
   ngOnInit() {
@@ -28,8 +33,12 @@ export class DmcaAdminToolComponent implements OnInit {
    return this.data 
   }
 
+  addDispute(ownerD, dispute)
+  {
+    this.api.addNewDispute(ownerD,dispute, this.urlDispute)
+  }
   addNotice(own, def, col){
-    this.api.addNewDispute(own, def, col, this.url)
+    this.api.addNewNotice(own, def, col, this.url)
 
   }
 

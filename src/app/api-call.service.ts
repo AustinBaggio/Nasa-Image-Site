@@ -8,6 +8,7 @@ export class ApiCallService {
 
   constructor(private http: Http,) { }
   data
+  disputeData
 
   getData(url){
     return this.http.get(url)
@@ -20,6 +21,13 @@ export class ApiCallService {
       
     })
   }
+  getDisputeData(url){
+    this.getData(url).subscribe(data=>{
+      this.disputeData=data;
+      console.log(this.data[this.data.length-1]);
+      
+    })
+  }
 
   getLatest(){
     console.log(this.data);
@@ -27,7 +35,7 @@ export class ApiCallService {
     return (this.data[this.data.length-1]);
   }
 
-  addNewDispute(own, def, col, url){
+  addNewNotice(own, def, col, url){
     const body = {
       owner: own,
       defendant: def,
@@ -46,6 +54,26 @@ export class ApiCallService {
     alert("Added to log")
     location.reload();
   }
+
+  addNewDispute(own, disp, url){
+
+      const body = {
+        owner: own,
+        dispute: disp
+  
+      }
+  
+  
+      this.http.post(url, body).subscribe(
+        (data:any) =>{
+          console.log(data)
+        }
+      );
+      alert("Added to log")
+      location.reload();
+    
+  }
+
 
   getAll(){
     return this.data

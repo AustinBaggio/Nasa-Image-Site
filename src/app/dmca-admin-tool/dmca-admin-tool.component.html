@@ -1,7 +1,7 @@
 <div class="container" *ngIf="genServe.isAdmin() == true ; else showNothing">
     
         <h2>DMCA and Takedown Policy</h2>
-        <br/><br/>
+        <br/>
       
       <ol>
       <li>
@@ -31,6 +31,7 @@
       </ol>
   
   <h2>Active Cases</h2>
+  <p>Here is where all of the active takedown cases are located. You can add a case using the form below</p>
   <br/><br/>
   <table border="1">
     <tr>
@@ -49,36 +50,59 @@
       <td>{{a.dispute}}</td>
     </tr>
 
-    <button></button>
   
   </table>   
      
 
 
-    <div> Add Takedown Notice
-        <div class="container">
+    <div> <h1>Add a Takedown Notice</h1>
             <h2>Owner</h2>  
-            <br/><br/>
 
             <textarea #own class="tArea" rows="2" cols="50"></textarea>
             <br/>
-          </div>
           
-          <div class="container">
             <h2>Defendant</h2>
-            <br/><br/>
             <textarea #def class="tArea" rows="2" cols="50"></textarea>
             <br/>
-          </div>
           
-          <div class="container">
             <h2>collectionURL</h2>
-            <br/><br/>
             <textarea #col class="tArea" rows="2" cols="50"></textarea>
             <br/>
-          </div>
           
           
           <button (click)='addNotice(own.value, def.value, col.value)'>Add Dispute</button> 
           
+          <br/><br/>
+          <h2>Recent Diputes</h2>
+          <p> This is where you can log any disputes that the defendant has sent in with response to a DMCA Takedown Notice</p>
+          <br/>
+          <table border="1">
+            <tr>
+              <th>Defendant</th>
+              <th>Claim</th>
+              
+            </tr>
+            <tr *ngFor='let a of api.disputeData;'>
+              <td>{{a.owner }}</td>
+
+              <td>{{a.dispute}}</td>
+            </tr>
+        
+          
+          </table>  
+        <h2>Log a Dispute</h2>
+              <h2>Defendant</h2>
+              <textarea #ownerD class="tArea" rows="2" cols="50"></textarea>
+              <br/>
+          
+                <h2>Defendant Dispute Statement</h2>
+                <textarea #dispute class="tArea" rows="10" cols="50"></textarea>
+                <br/>
+            
+            
+            <button (click)='addDispute(ownerD.value, dispute.value)'>Add Dispute</button> 
+            
+
+
+
         </div>
