@@ -22,7 +22,12 @@ export class CollectionLoadService {
   getStringData(url) {
     this.getData(url).subscribe(data => {
       this.data = data;
+      console.log(this.data)
+    })
+    this.getData(url).subscribe(data => {
       this.dataS = this.sortByRating(data);
+      console.log(this.dataS)
+      
     })
   }
   sortByRating(a) {
