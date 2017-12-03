@@ -1,62 +1,52 @@
+<div class="container" *ngIf="genServe.isAdmin() == true ; else showNormal">
+  <div class="container">
+    <h2>Privacy Policy</h2>
+    <br/>
+    <textarea #priv class="policy" rows="10" cols="80">{{this.getLatest().pPolicy}}</textarea>
+  </div>
 
-  <div class="container" *ngIf="genServe.isAdmin() == true ; else showNormal">
-      <div> Edit as Admin
-          <div class="container">
-              <h2>Privacy Policy</h2>  
-              <br/><br/>
+  <div class="container">
+    <h2>Security Policy</h2>
+    <br/>
+    <textarea #sec class="policy" rows="10" cols="80">{{this.getLatest().sPolicy}}</textarea>
+  </div>
 
-              <textarea #priv class="policy" rows="10" cols="80">{{this.getLatest().pPolicy}}</textarea>
-              <br/>
-            </div>
-            
-            <div class="container">
-              <h2>Security Policy</h2>
-              <br/><br/>
-              <textarea #sec class="policy" rows="10" cols="80">{{this.getLatest().sPolicy}}</textarea>
-              <br/>
-            </div>
-            
-            <div class="container">
-              <h2>DMCA and Takedown Policy</h2>
-              <br/><br/>
-              <textarea #dmca class="policy" rows="10" cols="80">{{this.getLatest().dmcaPolicy}}</textarea>
-              <br/>
-            </div>
-            
-            <div class="container">
-              <h2>DMCA and Takedown Contact</h2>
-              <br/><br/>
-              <textarea #con style="width:300px;" value={{this.getLatest().contact}}></textarea>
-              <br/>
-            </div>
-            <button (click)='saveAllPolicies(priv.value, sec.value, dmca.value, con.value)'>Save All</button> 
-            
+  <div class="container">
+    <h2>DMCA and Takedown Policy</h2>
+    <br/>
+    <textarea #dmca class="policy" rows="10" cols="80">{{this.getLatest().dmcaPolicy}}</textarea>
+  </div>
 
-      </div>
-    </div>
-    <ng-template #showNormal >
-        <div class="container">
-            <h2>Privacy Policy</h2>  
-            <br/><br/>
-            {{ this.getLatest().pPolicy }}
-          </div>
-          
-          <div class="container">
-            <h2>Security Policy</h2>
-            <br/><br/>
-            {{ this.getLatest().sPolicy }}
-          </div>
-          
-          <div class="container">
-            <h2>DMCA and Takedown Policy</h2>
-            <br/><br/>
-            {{ this.getLatest().dmcaPolicy }}
-          </div>
-          
-          <div class="container">
-              <h2>DMCA and Takedown Contact</h2>
-              <br/><br/>
-              {{ this.getLatest().contact }}
-          </div>
-    </ng-template>
+  <div class="container">
+    <h2>DMCA and Takedown Contact</h2>
+    <br/>
+    <textarea #con style="width:300px;" value={{this.getLatest().contact}}></textarea>
+  </div>
+  <button (click)='saveAllPolicies(priv.value, sec.value, dmca.value, con.value)'>Save All</button>
 
+</div>
+<ng-template #showNormal>
+  <div class="container">
+    <h2>Privacy Policy</h2>
+    <br/>
+    <br/> {{ this.getLatest().pPolicy }}
+  </div>
+
+  <div class="container">
+    <h2>Security Policy</h2>
+    <br/>
+    <br/> {{ this.getLatest().sPolicy }}
+  </div>
+
+  <div class="container">
+    <h2>DMCA and Takedown Policy</h2>
+    <br/>
+    <br/> {{ this.getLatest().dmcaPolicy }}
+  </div>
+
+  <div class="container">
+    <h2>DMCA and Takedown Contact</h2>
+    <br/>
+    <br/> {{ this.getLatest().contact }}
+  </div>
+</ng-template>

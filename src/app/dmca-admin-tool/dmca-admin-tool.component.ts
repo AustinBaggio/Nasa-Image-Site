@@ -35,9 +35,15 @@ export class DmcaAdminToolComponent implements OnInit {
 
   addDispute(ownerD, dispute)
   {
+    ownerD=this.genServe.sanatization(ownerD)
+    dispute=this.genServe.sanatization(dispute)
     this.api.addNewDispute(ownerD,dispute, this.urlDispute)
   }
   addNotice(own, def, col){
+    own=this.genServe.sanatization(own)
+    def=this.genServe.sanatization(def)
+    col=this.genServe.sanatization(col)
+    
     this.api.addNewNotice(own, def, col, this.url)
 
   }

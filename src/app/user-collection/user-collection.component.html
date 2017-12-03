@@ -1,3 +1,21 @@
-<p>
-  user-collection works!
-</p>
+<div class="container">
+    <h2>New Collection</h2>
+    <h2>Name</h2>
+    <textarea #name class="tArea" rows="2" cols="50"></textarea>
+    <br/>
+
+    <h2>Description</h2>
+    <textarea #desc class="tArea" rows="10" cols="50"></textarea>
+    <br/>
+
+    <h2>Visability </h2>
+    <select #vis>
+      <option value=0>Private</option>
+      <option value=1>Public</option>
+    </select>
+
+    <br/>
+    <br/>
+    <button (click)="newCollection(name.value, desc.value, vis.value)">Create Collection</button>
+
+</div>

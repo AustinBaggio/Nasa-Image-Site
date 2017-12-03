@@ -6,6 +6,7 @@ import { GeneralService } from './general.service';
 @Injectable()
 export class CollectionLoadService {
   data
+  defaultURL = "https://nasa-austinbaggio.c9users.io/api/collection"
   constructor(private http: Http, ) {
 
   }
@@ -23,4 +24,26 @@ export class CollectionLoadService {
 
     })
   }
+
+  postCollection(name,desc,vis,own){
+    const body = {
+      name: name,
+      descript: desc,
+      visability: vis,
+      owner: own
+
+    }
+
+
+    this.http.post(this.defaultURL, body).subscribe(
+      (data: any) => {
+        console.log(data)
+      }
+    );
+    alert("Collection Added")
+    location.reload();
+    
+  }
+
+
 }
