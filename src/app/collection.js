@@ -5,7 +5,7 @@ var CollectionSchema   = new Schema({
 
     
     name: String,
-    description: String,
+    descript: String,
     visability: Boolean,
     owner: String,
     imageUrls: [String],

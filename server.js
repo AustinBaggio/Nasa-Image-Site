@@ -7,6 +7,7 @@ mongoose.connect('mongodb://localhost/users_test'); // connect to our database
 var Message     = require('./src/app/message');
 var Notice     = require('./src/app/dmcaNotices');
 var Dispute     = require('./src/app/dispute');
+var Collection = require('./src/app/collection');
 
 // call the packages we need
 var express    = require('express');        // call express
@@ -47,6 +48,71 @@ router.get('/', function(req, res) {
     res.json({message: 'Welcome'});
 });
 
+
+//_____________ collection route _________________
+
+router.route('/collection') 
+    // create a message (accessed at POST http://localhost:8080/api/message)
+
+    .post(function(req, res) {
+    
+        console.log(req.body);
+        var collection = new Collection();      // create a new instance of the message model
+        collection.name = req.body.name;  
+        collection.owner = req.body.owner;  
+        collection.descript = req.body.descript;  
+        collection.visability = req.body.visability;  
+        collection.imageUrls = req.body.imageUrls;  
+        collection.rating = req.body.rating;  
+        
+        // save the message and check for errors
+        collection.save(function(err) {
+            if (err)
+                res.send(err);
+
+            res.json({ message: 'Collection Posted' });
+        });
+
+    })
+    
+       .get(function(req, res) {
+        Collection.find(function(err, collection) {
+            if (err)
+                res.send(err);
+
+            res.json(collection);
+        });
+    });
+    
+//Routes for Disputes
+router.route('/disputes') 
+    // create a message (accessed at POST http://localhost:8080/api/message)
+    .post(function(req, res) {
+    
+        console.log(req.body);
+        var dispute = new Dispute();      // create a new instance of the message model
+        dispute.timeStamp = Date.now();  // set the message timestamp (comes from the request)
+        dispute.owner = req.body.owner;  
+        dispute.dispute = req.body.dispute;
+        
+        // save the message and check for errors
+        dispute.save(function(err) {
+            if (err)
+                res.send(err);
+
+            res.json({ message: 'Dispute Posted' });
+        });
+
+    })
+    
+    .get(function(req, res) {
+        Dispute.find(function(err, dispute) {
+            if (err)
+                res.send(err);
+
+            res.json(dispute);
+        });
+    });
 // more routes for our API will happen here
 //Routes for DCMA Notices
 router.route('/dmcaNotice') 
@@ -146,19 +212,16 @@ router.route('/message')
         });
     })
     
-
-    
-    router.route('/bears/:bear_id')
-
-    // get the bear with that id (accessed at GET http://localhost:8080/api/bears/:bear_id)
-    .get(function(req, res) {
-        Notice.findById(req.params.notice_id, function(err, notice) {
+        .get(function(req, res) {
+        Message.find(function(err, message) {
             if (err)
                 res.send(err);
-            res.json(notice);
+
+            res.json(message);
         });
     });
 
+    
 
 // on routes that end in /message/:messagecount
 // ----------------------------------------------------
