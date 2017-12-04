@@ -1,7 +1,7 @@
 /* This component is for a single isntance of a collection
 it houses the collections images and other attributes for display and manipulation by the user */
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { SingleCollectionService } from '../single-collection.service';
 import { CollectionLoadService } from '../collection-load.service';
 import { GeneralService } from '../general.service';
@@ -13,19 +13,13 @@ import { GeneralService } from '../general.service';
 })
 export class SingleCollectionComponent implements OnInit {
 
-  name
-  description
-  visability
-  owner
-  imageUrls
-  rating
+  confirm = false
 
-  constructor(public sCol: SingleCollectionService, public colLoad:CollectionLoadService, public genServ:GeneralService) { }
-
+  constructor( public sCol: SingleCollectionService, public colLoad:CollectionLoadService, public genServ:GeneralService) { }
+  
   ngOnInit() {
   }
-
-
+  
   editCollection(id, name, desc, vis){
     var owne=this.genServ.afAuth.auth.currentUser.email
     
@@ -35,7 +29,14 @@ export class SingleCollectionComponent implements OnInit {
     
   }
 
+  
+  clicked(){
+    this.confirm = !this.confirm
+    
+  }
+
   deleteCollection(a){
+    this.clicked()
     this.sCol.deleteCollection(a._id);
     alert("Deleted Collection")
   }

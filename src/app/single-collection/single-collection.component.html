@@ -1,24 +1,41 @@
-
 <div class="container">
-    <h2>Edit: {{sCol.currentCol.name}}</h2>
+  <h2>Edit: {{sCol.currentCol.name}}</h2>
 
-    <h2>Name</h2>
-    <textarea #name class="tArea" rows="2" cols="50">{{sCol.currentCol.name}}</textarea>
-    <br/>
+  <h2>Name</h2>
+  <textarea #name class="tArea" rows="2" cols="50">{{sCol.currentCol.name}}</textarea>
+  <br/>
 
-    <h2>Description</h2>
-    <textarea #desc class="tArea" rows="10" cols="50">{{sCol.currentCol.descript}}</textarea>
-    <br/>
+  <h2>Description</h2>
+  <textarea #desc class="tArea" rows="10" cols="50">{{sCol.currentCol.descript}}</textarea>
+  <br/>
 
-    <h2>Visability </h2>
-    <select #vis>
-      <option value=0>Private</option>
-      <option value=1>Public</option>
-    </select>
+  <h2>Visability </h2>
+  <select #vis>
+    <option value=0>Private</option>
+    <option value=1>Public</option>
+  </select>
 
-    <br/>
-    <br/>
-    <button (click)="editCollection(sCol.currentCol._id, name.value, desc.value, vis.value)">Update Collection</button>
-    <button (click)="deleteCollection(sCol.currentCol)">Delete Collection</button>
-    
-</div>
+  <br/>
+  <br/>
+      
+  <div class="container" *ngIf="this.confirm == false; else showConfirm">
+    <button (click)="editCollection(sCol.currentCol._id, name.value, desc.value, vis.value)">Update Collection</button> 
+    <button (click)='clicked()'> Delete </button>
+  </div>
+    <ng-template #showConfirm>
+      Are you sure?
+      <div class="container">
+          <button (click)="deleteCollection(sCol.currentCol)">Delete Collection</button>
+          <button (click)=clicked()>Cancel</button>
+      </div>
+    </ng-template>
+
+    <!--     <div class="container" *ngIf="clicked() == false ; else confirm">
+        <button (click)="clicked()">Delete Collection</button>
+        
+        <ng-template #confirm >
+          <button (click)="deleteCollection(sCol.currentCol)">Delete Collection</button>
+          <button (click)=clicked()>Cancel</button>
+        </ng-template>    -->
+
+
