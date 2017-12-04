@@ -4,11 +4,15 @@
     <div class="container" *ngIf="isVerified() == false ; else showNormal">
         <h1>Hello {{ user.displayName }}! Please Verify your email</h1>
         <button (click)="emailVerify()">Resend Verification Email</button>
-        <button (click)="genServe.globalLogout()">Logout</button>    
+        <button (click)="genServe.globalLogout()">Logout</button>   
+        <br/><br/> 
+        <app-collection></app-collection>
+        
       </div>
       <ng-template #showNormal >
-          <h1>Hello {{ user.displayName }}</h1>
-          <button (click)="genServe.globalLogout()">Logout</button>    
+          <h1>Hello {{ user.email }}</h1>
+          <button (click)="genServe.globalLogout()">Logout</button> 
+          
       </ng-template>
 </div>
 <ng-template #showLogin >

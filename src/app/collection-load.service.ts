@@ -16,7 +16,8 @@ export class CollectionLoadService {
   dataU
 
   //default to collection if not passed
-  defaultURL = "https://nasa-austinbaggio.c9users.io/api/collection"
+  defaultURL = this.genServ.url + "collection/";
+  
   constructor(private http: Http, public genServ: GeneralService) {
 
   }
@@ -113,7 +114,7 @@ export class CollectionLoadService {
       }
     );
     alert("Collection Added")
-    location.reload();
+    location.replace("/home")
   }
 
 }

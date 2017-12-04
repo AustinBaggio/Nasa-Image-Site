@@ -13,7 +13,7 @@ import { GeneralService } from '../general.service';
 })
 export class CollectionComponent implements OnInit {
   //api URL for collections
-  url:string = this.genServe+'collection'; 
+  url:string = this.genServe.url+'collection/'; 
   
   //local collection of data for testing
   colTen

@@ -1,8 +1,10 @@
 <div *ngIf="genServe.afAuth.authState | async; let user; else showPublicTen">
 
+
     <button routerLink="/user-collection">Create a New Collection</button>
     <table border="1">
         <tr>
+            <th> </th>
             <th>Title</th>
             <th>Description</th>
             <th>Visability</th>
@@ -10,11 +12,13 @@
 
         </tr>
         <tr *ngFor='let a of colLoad.dataU;'>
+
             <td>
-                <button routerLink="/single-collection" (click)='sCol.showSingleCollection(a)'>{{a.name}}</button>
+                <button routerLink="/single-collection" (click)='sCol.showSingleCollection(a)'>Edit</button>
             </td>
-            <td>{{a.rating}}</td>
-            <td>{{a.Visability}}</td>
+            <td>{{a.name}}  </td>
+            <td>{{a.descript}}</td>
+            <td>{{a.visability}}</td>
             <td>{{a.owner}}</td>
         </tr>
     </table>
@@ -28,7 +32,6 @@
             <th>Rating</th>
             <th>Owner</th>
             <th>Visability</th>
-
         </tr>
         <tr *ngFor='let a of colLoad.dataS;'>
             <td>

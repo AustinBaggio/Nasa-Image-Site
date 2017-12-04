@@ -19,8 +19,8 @@ import { ApiCallService } from '../api-call.service';
 export class DmcaAdminToolComponent implements OnInit {
 
   //Urls for the location in the mondo DB of the dmcaNotices and disputes
-  url: string = this.genServe.url+'dmcaNotice';
-  urlDispute: string = this.genServe+'disputes';
+  url: string = this.genServe.url+'dmcaNotice/';
+  urlDispute: string = this.genServe.url+'disputes/';
 
   //local data returned from the get requests
   data: any = {};

@@ -3,6 +3,8 @@ it houses the collections images and other attributes for display and manipulati
 
 import { Component, OnInit } from '@angular/core';
 import { SingleCollectionService } from '../single-collection.service';
+import { CollectionLoadService } from '../collection-load.service';
+import { GeneralService } from '../general.service';
 
 @Component({
   selector: 'app-single-collection',
@@ -18,23 +20,23 @@ export class SingleCollectionComponent implements OnInit {
   imageUrls
   rating
 
-  constructor(public sCol: SingleCollectionService) { }
+  constructor(public sCol: SingleCollectionService, public colLoad:CollectionLoadService, public genServ:GeneralService) { }
 
   ngOnInit() {
   }
 
 
   editCollection(id, name, desc, vis){
-
-    console.log("ID: "+ id)
-    console.log("NAME " +name)
-    console.log("DESC " +desc)
-    console.log("VIS "+vis)
+    var owne=this.genServ.afAuth.auth.currentUser.email
+    
+    this.sCol.deleteCollection(id);
+    this.colLoad.postCollection(name, desc, vis, owne)
+    alert("Updated Collection")
     
   }
 
   deleteCollection(a){
-    console.log("DELETING " +a._id)
     this.sCol.deleteCollection(a._id);
+    alert("Deleted Collection")
   }
 }

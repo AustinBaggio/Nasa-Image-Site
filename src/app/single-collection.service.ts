@@ -7,7 +7,7 @@ export class SingleCollectionService {
   currentCol
   constructor(private http: Http, public genServe:GeneralService) { }
 
-  url = this.genServe.url+"collection";
+  url = this.genServe.url+"collection/";
   //gets the collection that was sent from the home page
   showSingleCollection(a){
     this.currentCol=a;
@@ -15,17 +15,11 @@ export class SingleCollectionService {
 
    //simple post all
    deleteCollection(id) {
-    const body = {
-      _id: id,
-    }
-    console.log("body: " +body)
-    this.http.delete(this.url,new RequestOptions({
-      body: body})).subscribe(
-      (data: any) => {
-        console.log("data: " +data)
-      }
-    );
-    alert("Collection Deleted")
+     console.log(this.url+id);
+      this.http.delete(this.url+id).subscribe(data=>{
+      console.log(data)
+    })
+   
   }
   
 
