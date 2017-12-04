@@ -34,7 +34,7 @@ export class CollectionLoadService {
     })
     this.getData(url).subscribe(data => {
       this.dataS = this.sortByRating(data);
-
+      
     })
     this.getData(url).subscribe(data => {
       this.dataU = this.user(data);
@@ -65,26 +65,31 @@ export class CollectionLoadService {
 
   //sort function
   sortByRating(a) {
-
+    var b = new Array()
     for (var i = 0; i < a.length; i++) {
+      if (a[i].visability == true){
+        b.push(a[i]);
+      }
+    }      
+
+    for (var i = 0; i < b.length; i++) {
+      
       //give undefined a rating of 0
-      if (typeof a[i].rating === 'undefined') {
-        a[i].rating = 0;
+      if (typeof b[i].rating == 'undefined') {
+        b[i].rating = 0;
       }
-      //remove all private collections
-      if (a[i].visability === false) {
-        a.splice(i, 1)
-      }
+
+
 
     }
     var outer, inner;
     //bubble sort by rating
-    for (outer = a.length - 1; outer > 0; outer--) {
+    for (outer = b.length - 1; outer > 0; outer--) {
       for (inner = 0; inner < outer; inner++) {
-        if (a[inner].rating < a[inner + 1].rating) {
-          var temp = a[inner];
-          a[inner] = a[inner + 1];
-          a[inner + 1] = temp;
+        if (b[inner].rating < b[inner + 1].rating) {
+          var temp = b[inner];
+          b[inner] = b[inner + 1];
+          b[inner + 1] = temp;
         }
       }
 
@@ -92,11 +97,11 @@ export class CollectionLoadService {
     for (var i = 0; i < a.length; i++) {
 
       //shorten down to ten collections
-      if (a.length > 10) {
-        a.splice(a.length - 1, 1)
+      if (b.length > 10) {
+        b.pop();
       }
     }
-    return a;
+    return b;
 
   }
 
