@@ -8,6 +8,8 @@ import * as firebase from 'firebase/app';
 @Injectable()
 export class GeneralService {
 
+  url = "https://nasa-austinbaggio.c9users.io/api/";
+  
 
   constructor(public afAuth: AngularFireAuth) { }
 

@@ -34,6 +34,7 @@ export class SingleCollectionComponent implements OnInit {
   }
 
   deleteCollection(a){
-    console.log("DELETING " +a)
+    console.log("DELETING " +a._id)
+    this.sCol.deleteCollection(a._id);
   }
 }

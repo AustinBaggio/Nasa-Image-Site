@@ -14,7 +14,7 @@ import { GeneralService } from '../general.service';
 export class PpdmcaComponent implements OnInit {
 
   //API endpoint
-  url: string = 'https://nasa-austinbaggio.c9users.io/api/message';
+  url: string = this.genServe.url+'message';
 
   //local store of data for manipulation
   data: any = {};

@@ -13,7 +13,7 @@ import { GeneralService } from '../general.service';
 })
 export class CollectionComponent implements OnInit {
   //api URL for collections
-  url:string = 'https://nasa-austinbaggio.c9users.io/api/collection'; 
+  url:string = this.genServe+'collection'; 
   
   //local collection of data for testing
   colTen

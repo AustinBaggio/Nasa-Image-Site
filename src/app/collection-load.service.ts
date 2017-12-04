@@ -37,13 +37,11 @@ export class CollectionLoadService {
     })
     this.getData(url).subscribe(data => {
       this.dataU = this.user(data);
-      console.log(this.dataU);
     })
   }
 
   user(a) {
     var b = new Array()
-    console.log("HELLO WTF")
     var email = this.genServ.afAuth.auth.currentUser.email
     for (var i = 0; i < a.length; i++) {
       if (a[i].owner === email) {
