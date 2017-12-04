@@ -4,14 +4,18 @@
     <table border="1">
         <tr>
             <th>Title</th>
-            <th>Rating</th>
+            <th>Description</th>
+            <th>Visability</th>
+            <th>Owner</th>
 
         </tr>
-        <tr *ngFor='let a of colLoad.data;'>
+        <tr *ngFor='let a of colLoad.dataU;'>
             <td>
-                <button routerLink="/single-collection" (click)='sCol.showSingleCollection(a._id)'>{{a.name}}</button>
+                <button routerLink="/single-collection" (click)='sCol.showSingleCollection(a)'>{{a.name}}</button>
             </td>
             <td>{{a.rating}}</td>
+            <td>{{a.Visability}}</td>
+            <td>{{a.owner}}</td>
         </tr>
     </table>
 
@@ -22,14 +26,16 @@
         <tr>
             <th>Title</th>
             <th>Rating</th>
+            <th>Owner</th>
             <th>Visability</th>
-            
+
         </tr>
         <tr *ngFor='let a of colLoad.dataS;'>
             <td>
-                <button routerLink="/single-collection" (click)='sCol.showSingleCollection(a._id)'>{{a.name}}</button>
+                <button routerLink="/single-collection" (click)='sCol.showSingleCollection(colLoad.dataS._id)'>{{a.name}}</button>
             </td>
             <td>{{a.rating}}</td>
+            <td>{{a.owner}}</td>
             <td>{{a.visability}}</td>
         </tr>
     </table>

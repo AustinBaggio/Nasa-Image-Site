@@ -12,9 +12,12 @@ export class CollectionLoadService {
   //10 collections sorted by ranking descending
   dataS
 
+  //User collections
+  dataU
+
   //default to collection if not passed
   defaultURL = "https://nasa-austinbaggio.c9users.io/api/collection"
-  constructor(private http: Http, ) {
+  constructor(private http: Http, public genServ: GeneralService) {
 
   }
 
@@ -32,6 +35,22 @@ export class CollectionLoadService {
       this.dataS = this.sortByRating(data);
 
     })
+    this.getData(url).subscribe(data => {
+      this.dataU = this.user(data);
+      console.log(this.dataU);
+    })
+  }
+
+  user(a) {
+    var b = new Array()
+    console.log("HELLO WTF")
+    var email = this.genServ.afAuth.auth.currentUser.email
+    for (var i = 0; i < a.length; i++) {
+      if (a[i].owner === email) {
+        b.push(a[i])
+      }
+    }
+    return b;
   }
 
   //adds a rating of 0 for all collections that have not been rated yet
@@ -56,12 +75,9 @@ export class CollectionLoadService {
       //remove all private collections
       if (a[i].visability === false) {
         a.splice(i, 1)
-        i--;
       }
 
     }
-
-    console.log(a);
     var outer, inner;
     //bubble sort by rating
     for (outer = a.length - 1; outer > 0; outer--) {

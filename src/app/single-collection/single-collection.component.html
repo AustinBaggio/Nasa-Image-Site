@@ -1,5 +1,24 @@
-<p>
-  single-collection works!
-</p>
 
-{{sCol.currentColId}}
+<div class="container">
+    <h2>Edit: {{sCol.currentCol.name}}</h2>
+
+    <h2>Name</h2>
+    <textarea #name class="tArea" rows="2" cols="50">{{sCol.currentCol.name}}</textarea>
+    <br/>
+
+    <h2>Description</h2>
+    <textarea #desc class="tArea" rows="10" cols="50">{{sCol.currentCol.descript}}</textarea>
+    <br/>
+
+    <h2>Visability </h2>
+    <select #vis>
+      <option value=0>Private</option>
+      <option value=1>Public</option>
+    </select>
+
+    <br/>
+    <br/>
+    <button (click)="editCollection(sCol.currentCol._id, name.value, desc.value, vis.value)">Update Collection</button>
+    <button (click)="deleteCollection(sCol.currentCol)">Delete Collection</button>
+    
+</div>

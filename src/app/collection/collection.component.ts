@@ -26,12 +26,10 @@ export class CollectionComponent implements OnInit {
 
     //testing
     this.colTen = colLoad.data;
-    console.log(this.colTen)
     
   }
 
   ngOnInit() {
   }
    
-
 }

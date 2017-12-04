@@ -23,4 +23,17 @@ export class SingleCollectionComponent implements OnInit {
   ngOnInit() {
   }
 
+
+  editCollection(id, name, desc, vis){
+
+    console.log("ID: "+ id)
+    console.log("NAME " +name)
+    console.log("DESC " +desc)
+    console.log("VIS "+vis)
+    
+  }
+
+  deleteCollection(a){
+    console.log("DELETING " +a)
+  }
 }
