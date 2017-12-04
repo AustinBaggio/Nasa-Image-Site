@@ -74,7 +74,7 @@
 
 
   <div>
-    <h1>Add a Takedown Notice</h1>
+    <h1>Add a Takedown Request</h1>
     <h2>Owner</h2>
 
     <textarea #own class="tArea" rows="2" cols="50"></textarea>
@@ -88,8 +88,13 @@
     <textarea #col class="tArea" rows="2" cols="50"></textarea>
     <br/>
 
+    <h2>Sent Notice</h2>
+    <select #not>
+        <option value=0>False</option>
+        <option value=1>True</option>
+    </select>
 
-    <button (click)='addNotice(own.value, def.value, col.value)'>Add Dispute</button>
+    <button (click)='addNotice(own.value, def.value, col.value, not.value)'>Add Request</button>
 
     <br/>
     <br/>

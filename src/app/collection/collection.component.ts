@@ -28,6 +28,13 @@ export class CollectionComponent implements OnInit {
     this.colTen = colLoad.data;
     
   }
+  publicPrivate(a){
+    if (a.visability == true){
+    return "Public"
+    }
+    return "Private"
+    
+  }
 
   ngOnInit() {
   }

@@ -6,25 +6,24 @@
         <button (click)="emailVerify()">Resend Verification Email</button>
         <button (click)="genServe.globalLogout()">Logout</button>   
         <br/><br/> 
-        <app-collection></app-collection>
         
       </div>
       <ng-template #showNormal >
           <h1>Hello {{ user.email }}</h1>
           <button (click)="genServe.globalLogout()">Logout</button> 
+          <app-collection></app-collection>
           
       </ng-template>
 </div>
 <ng-template #showLogin >
-    <h2>Login</h2>
-    <button (click)="login()">Login with Google</button>
+    <h2>Register Or Login</h2>
 
-  <p>Register with email and password</p>
   Email: <input #emailIn type="text" name="email" value="name@example.com"><br>
   Password: <input #passIn type="password" name="pass" value="password"><br>
   
   <button (click)="registerWithEmail(emailIn.value, passIn.value)">Register</button>
   <button (click)="loginWithEmail(emailIn.value, passIn.value)">Log-In</button>
+  <button (click)="login()">Login with Google</button>
   
 </ng-template>
 

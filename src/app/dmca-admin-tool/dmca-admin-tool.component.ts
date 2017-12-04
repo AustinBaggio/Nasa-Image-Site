@@ -53,7 +53,7 @@ export class DmcaAdminToolComponent implements OnInit {
     //calling post in service
     this.api.addNewDispute(ownerD, dispute, this.urlDispute)
   }
-  addNotice(own, def, col) {
+  addNotice(own, def, col, not) {
 
     //sanatizinginput
     own = this.genServe.sanatization(own)
@@ -61,7 +61,7 @@ export class DmcaAdminToolComponent implements OnInit {
     col = this.genServe.sanatization(col)
 
     //calling post in service
-    this.api.addNewNotice(own, def, col, this.url)
+    this.api.addNewNotice(own, def, col, not, this.url)
 
   }
 

@@ -18,7 +18,7 @@
             </td>
             <td>{{a.name}}  </td>
             <td>{{a.descript}}</td>
-            <td>{{a.visability}}</td>
+            <td>{{publicPrivate(a)}}</td>
             <td>{{a.owner}}</td>
         </tr>
     </table>
@@ -39,7 +39,7 @@
             </td>
             <td>{{a.rating}}</td>
             <td>{{a.owner}}</td>
-            <td>{{a.visability}}</td>
+            <td>{{publicPrivate(a)}}</td>
         </tr>
     </table>
 </ng-template>
