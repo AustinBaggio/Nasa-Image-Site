@@ -13,6 +13,8 @@ export class SingleCollectionService {
     this.currentCol=a;
   }
 
+
+
    //simple post all
    deleteCollection(id) {
      console.log(this.url+id);

@@ -1,0 +1,14 @@
+<p>
+Search for Images
+</p>
+
+Search: <input #search name="s" value="nasa">
+
+<button (click)='sendQuery(search.value)'>Search</button>
+<button (click)='prevTen()'><-</button>
+<button (click)='nextTen()'>-></button>
+<div *ngFor='let a of this.tenResults'>
+  <img height="100" width="100" src= {{a.links[0].href}}>
+
+</div>
+<br/>

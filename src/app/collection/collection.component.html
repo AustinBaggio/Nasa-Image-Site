@@ -16,7 +16,7 @@
             <td>
                 <button routerLink="/single-collection" (click)='sCol.showSingleCollection(a)'>Edit</button>
             </td>
-            <td>{{a.name}}  </td>
+            <td routerLink="/display-image" (click)='sCol.showSingleCollection(a)'>{{a.name}}</td>
             <td>{{a.descript}}</td>
             <td>{{publicPrivate(a)}}</td>
             <td>{{a.owner}}</td>
@@ -34,9 +34,7 @@
             <th>Visability</th>
         </tr>
         <tr *ngFor='let a of colLoad.dataS;'>
-            <td>
-                <button routerLink="/single-collection" (click)='sCol.showSingleCollection(colLoad.dataS._id)'>{{a.name}}</button>
-            </td>
+            <td routerLink="/display-image" (click)='sCol.showSingleCollection(a)'>{{a.name}}</td>
             <td>{{a.rating}}</td>
             <td>{{a.owner}}</td>
             <td>{{publicPrivate(a)}}</td>

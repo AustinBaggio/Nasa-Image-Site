@@ -8,19 +8,31 @@ import { GeneralService } from './general.service';
 export class CollectionLoadService {
   //all collections
   data
-
   //10 collections sorted by ranking descending
   dataS
-
   //User collections
   dataU
 
+  QueryResult 
+  
   //default to collection if not passed
   defaultURL = this.genServ.url + "collection/";
+
+  nasaSearch = this.genServ.nasaURL +"search?q="
   
   constructor(private http: Http, public genServ: GeneralService) {
 
   }
+
+  getNasaCollections(query ?: string) {
+    query = query ? query : 'nasa';
+    var url = this.nasaSearch+query
+    console.log(url)
+    return this.http.get(url)
+      .map((res: Response) => res.json())
+    
+  }
+
 
   //simple get
   getData(url) {
@@ -28,7 +40,7 @@ export class CollectionLoadService {
       .map((res: Response) => res.json())
   }
   getStringData(url) {
-    //two subscribes since data is beingstored twice
+    //three subscribes since data is beingstored thrice
     this.getData(url).subscribe(data => {
       this.data = this.clean(data);
     })

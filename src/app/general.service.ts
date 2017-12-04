@@ -9,7 +9,7 @@ import * as firebase from 'firebase/app';
 export class GeneralService {
 
   url = "https://nasa-austinbaggio.c9users.io/api/";
-  
+  nasaURL = 'https://images-api.nasa.gov/'
 
   constructor(public afAuth: AngularFireAuth) { }
 

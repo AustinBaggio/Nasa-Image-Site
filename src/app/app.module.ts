@@ -24,6 +24,8 @@ import { CollectionLoadService } from './collection-load.service';
 import { SingleCollectionComponent } from './single-collection/single-collection.component';
 import { SingleCollectionService } from './single-collection.service';
 import { UserCollectionComponent } from './user-collection/user-collection.component';
+import { DisplayImageComponent } from './display-image/display-image.component';
+import { SearchNasaComponent } from './search-nasa/search-nasa.component';
 
 //config file to connect to firebase
 export const firebaseConfig = {
@@ -40,8 +42,10 @@ const appRoutes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'dmca-admin-tool', component: DmcaAdminToolComponent},
   { path: 'login', component: LoginComponent},
+  { path: 'searchNasa', component: SearchNasaComponent},
   { path: 'about', component: AboutComponent},
   { path: 'policies', component: PpdmcaComponent},
+  { path: 'display-image', component: DisplayImageComponent},
   { path: 'single-collection', component: SingleCollectionComponent},
   { path: 'user-collection', component: UserCollectionComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full'}, //default is home
@@ -58,7 +62,9 @@ const appRoutes: Routes = [
     PpdmcaComponent,
     DmcaAdminToolComponent,
     SingleCollectionComponent,
-    UserCollectionComponent
+    UserCollectionComponent,
+    DisplayImageComponent,
+    SearchNasaComponent
   ],
   imports: [
     BrowserModule,
