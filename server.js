@@ -82,6 +82,17 @@ router.route('/collection')
 
             res.json(collection);
         });
+    })
+    
+        .delete(function(req, res) {
+        Collection.remove({
+            _id: req.body.id
+        }, function(err, collection) {
+            if (err)
+                res.send(err);
+
+            res.json({ message: 'Successfully deleted Collection' });
+        });
     });
     
 //Routes for Disputes
