@@ -12,6 +12,7 @@
 <ul>
   <li><a routerLink="/home">HOME</a></li>
   <li *ngIf="genServe.afAuth.authState | async; let user;"><a routerLink="/searchNasa">SEARCH</a></li>
+  <li *ngIf="genServe.afAuth.authState | async; let user;"><a routerLink="/public-collections">ALL PUBLIC COLLECTIONS</a></li>
   <li><a routerLink="/about">ABOUT</a></li>
   <li><a routerLink="/policies">LEGAL</a></li>
       

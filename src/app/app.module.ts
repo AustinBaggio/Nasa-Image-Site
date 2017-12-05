@@ -28,6 +28,7 @@ import { DisplayImageComponent } from './display-image/display-image.component';
 import { SearchNasaComponent } from './search-nasa/search-nasa.component';
 import { AddImageComponent } from './add-image/add-image.component';
 import { FullImageComponent } from './full-image/full-image.component';
+import { PublicCollectionsComponent } from './public-collections/public-collections.component';
 
 //config file to connect to firebase
 export const firebaseConfig = {
@@ -46,6 +47,7 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'searchNasa', component: SearchNasaComponent},
   { path: 'add-image', component: AddImageComponent},
+  { path: 'public-collections', component: PublicCollectionsComponent},
   { path: 'full-image', component: FullImageComponent},
   { path: 'about', component: AboutComponent},
   { path: 'policies', component: PpdmcaComponent},
@@ -70,7 +72,8 @@ const appRoutes: Routes = [
     DisplayImageComponent,
     SearchNasaComponent,
     AddImageComponent,
-    FullImageComponent
+    FullImageComponent,
+    PublicCollectionsComponent
   ],
   imports: [
     BrowserModule,

@@ -17,4 +17,10 @@ export class DisplayImageComponent implements OnInit {
   ngOnInit() {
   }
 
+  updateRating(rate){
+
+    
+
+  }
+
 }

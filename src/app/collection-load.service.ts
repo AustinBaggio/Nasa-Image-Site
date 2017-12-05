@@ -12,6 +12,8 @@ export class CollectionLoadService {
   dataS
   //User collections
   dataU
+  //Public Data
+  dataP
 
   QueryResult
 
@@ -51,6 +53,19 @@ export class CollectionLoadService {
     this.getData(url).subscribe(data => {
       this.dataU = this.user(data);
     })
+    this.getData(url).subscribe(data => {
+      this.dataP = this.publicOnly(this.clean(data));
+    })
+  }
+
+  publicOnly(a) {
+    var b = []
+    for (var i = 0; i < a.length; i++) {
+      if (a[i].visability == true) {
+        b.push(a[i]);
+      }
+    }
+    return b
   }
 
   user(a) {
