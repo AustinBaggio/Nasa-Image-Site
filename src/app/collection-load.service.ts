@@ -118,6 +118,29 @@ export class CollectionLoadService {
   }
 
   //simple post all
+  postCollectionWithImage(name, desc, vis, own, iUrl) {
+    console.log(name, desc, vis, own, iUrl)
+    var imgArray = []
+    imgArray.push(iUrl);
+
+    const body = {
+      name: name,
+      descript: desc,
+      visability: vis,
+      owner: own,
+      imageUrls: imgArray
+    }
+    this.http.post(this.defaultURL, body).subscribe(
+      (data: any) => {
+        console.log(data)
+      }
+    );
+    alert("Collection Added")
+    location.replace("/home")
+  }
+
+
+  //simple post all
   postCollection(name, desc, vis, own) {
     const body = {
       name: name,

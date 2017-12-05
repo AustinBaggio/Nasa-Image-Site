@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GeneralService } from '../general.service';
 import { CollectionLoadService } from '../collection-load.service';
+import { SingleCollectionService } from '../single-collection.service';
 
 @Component({
   selector: 'app-add-image',
@@ -17,6 +18,10 @@ export class AddImageComponent implements OnInit {
   addImage(col, link){
     alert("ADDING IMAGE")
     /* Add the image link to an existing collection */
+
+    this.colLoad.postCollectionWithImage("Nasa Image", "Sweet Meeting", 1, "austinbaggio@gmail.com", link)
   }
+
+  
 
 }
