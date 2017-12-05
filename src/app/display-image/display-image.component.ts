@@ -10,7 +10,7 @@ import { CollectionLoadService } from '../collection-load.service';
 })
 export class DisplayImageComponent implements OnInit {
 
-  constructor(public colLoad:CollectionLoadService, public sCol:SingleCollectionService, public genServe:GeneralService) { 
+  constructor(public colLoad:CollectionLoadService, public sCol:SingleCollectionService, public genServ:GeneralService) { 
     
   }
 

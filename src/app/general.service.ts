@@ -24,7 +24,13 @@ export class GeneralService {
   }
 
   currentImage
-
+  displayImage
+  currentCollection
+  imageAndCollection(image, collection){
+    this.displayImage=image;
+    this.currentCollection=collection;
+    console.log(this.displayImage, this.currentCollection)
+  }
   //check the format of emails
   emailFormat(text) {
     //search for an @, if it is before the ., and the length is greater than 1, than the email is in a correct format

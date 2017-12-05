@@ -3,6 +3,7 @@
 
 </p>
 <tr *ngFor='let a of sCol.currentCol.imageUrls;'>
-    <img src={{a}}>
 
+    <img height="100" width="100" src= {{a}} routerLink="/full-image" (click)='genServ.imageAndCollection(a,sCol.currentCol)'>
+    
 </tr>
