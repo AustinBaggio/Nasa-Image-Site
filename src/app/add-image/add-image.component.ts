@@ -10,18 +10,24 @@ import { SingleCollectionService } from '../single-collection.service';
 })
 export class AddImageComponent implements OnInit {
 
-  constructor(public genServ: GeneralService, public colLoad:CollectionLoadService) { }
+  constructor(public genServ: GeneralService, public colLoad:CollectionLoadService, public sCol: SingleCollectionService) { }
 
   ngOnInit() {
   }
 
   addImage(col, link){
-    alert("ADDING IMAGE")
-    /* Add the image link to an existing collection */
 
-    this.colLoad.postCollectionWithImage("Nasa Image", "Sweet Meeting", 1, "austinbaggio@gmail.com", link)
+    
+    console.log(col._id)
+    /* Add the image link to an existing collection */
+    
+    col.imageUrls.push(link)
+    console.log(col.imageUrls)
+    this.colLoad.updateImageCollection(col.name, col.descript, col.visability, col.owner, col.imageUrls)
+    this.sCol.deleteCollection(col._id);
+    
   }
 
-  
+
 
 }

@@ -20,12 +20,11 @@ export class SingleCollectionComponent implements OnInit {
   ngOnInit() {
   }
   
-  editCollection(id, name, desc, vis){
+  editCollection(id, name, desc, vis, urls){
     var owne=this.genServ.afAuth.auth.currentUser.email
     
     this.sCol.deleteCollection(id);
-    this.colLoad.postCollection(name, desc, vis, owne)
-    alert("Updated Collection")
+    this.colLoad.updateImageCollection(name, desc, vis, owne, urls)
     
   }
 

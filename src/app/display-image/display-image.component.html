@@ -1,7 +1,8 @@
 <p>
-Here are the images in: {{sCol.currentCol.name}}
+    Here are the images in: {{sCol.currentCol.name}}
 
 </p>
+<tr *ngFor='let a of sCol.currentCol.imageUrls;'>
+    <img src={{a}}>
 
-{{sCol.currentCol.imageUrls}}
-
+</tr>

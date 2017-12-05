@@ -19,7 +19,7 @@
   <br/>
       
   <div class="container" *ngIf="this.confirm == false; else showConfirm">
-    <button (click)="editCollection(sCol.currentCol._id, name.value, desc.value, vis.value)">Update Collection</button> 
+    <button (click)="editCollection(sCol.currentCol._id, name.value, desc.value, vis.value, sCol.currentCol.imageUrls)">Update Collection</button> 
     <button (click)='clicked()'> Delete </button>
   </div>
     <ng-template #showConfirm>

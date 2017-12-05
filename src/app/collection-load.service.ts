@@ -13,24 +13,24 @@ export class CollectionLoadService {
   //User collections
   dataU
 
-  QueryResult 
-  
+  QueryResult
+
   //default to collection if not passed
   defaultURL = this.genServ.url + "collection/";
 
-  nasaSearch = this.genServ.nasaURL +"search?q="
-  
+  nasaSearch = this.genServ.nasaURL + "search?q="
+
   constructor(private http: Http, public genServ: GeneralService) {
 
   }
 
-  getNasaCollections(query ?: string) {
+  getNasaCollections(query?: string) {
     query = query ? query : 'nasa';
-    var url = this.nasaSearch+query
+    var url = this.nasaSearch + query
     console.log(url)
     return this.http.get(url)
       .map((res: Response) => res.json())
-    
+
   }
 
 
@@ -46,7 +46,7 @@ export class CollectionLoadService {
     })
     this.getData(url).subscribe(data => {
       this.dataS = this.sortByRating(data);
-      
+
     })
     this.getData(url).subscribe(data => {
       this.dataU = this.user(data);
@@ -79,13 +79,13 @@ export class CollectionLoadService {
   sortByRating(a) {
     var b = new Array()
     for (var i = 0; i < a.length; i++) {
-      if (a[i].visability == true){
+      if (a[i].visability == true) {
         b.push(a[i]);
       }
-    }      
+    }
 
     for (var i = 0; i < b.length; i++) {
-      
+
       //give undefined a rating of 0
       if (typeof b[i].rating == 'undefined') {
         b[i].rating = 0;
@@ -135,8 +135,28 @@ export class CollectionLoadService {
         console.log(data)
       }
     );
-    alert("Collection Added")
+    alert("Collection Updated")
     location.replace("/home")
+  }
+
+  //simple post all
+  updateImageCollection(name, desc, vis, own, iUrl) {
+    console.log(name, desc, vis, own, iUrl)
+
+
+    const body = {
+      name: name,
+      descript: desc,
+      visability: vis,
+      owner: own,
+      imageUrls: iUrl
+    }
+    this.http.post(this.defaultURL, body).subscribe(
+      (data: any) => {
+        console.log(data)
+      }
+    );
+    alert("Collection Updated")
   }
 
 

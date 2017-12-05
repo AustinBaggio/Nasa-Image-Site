@@ -8,7 +8,7 @@ var CollectionSchema   = new Schema({
     descript: String,
     visability: Boolean,
     owner: String,
-    imageUrls: [{href: String}],
+    imageUrls: [String],
     rating: {type: Number, min:0, max:10}
 
 });
