@@ -8,7 +8,7 @@ Search: <input #search name="s" value="nasa">
 <button (click)='prevTen()'><-</button>
 <button (click)='nextTen()'>-></button>
 <div *ngFor='let a of this.tenResults'>
-  <img height="100" width="100" src= {{a.links[0].href}}>
-
+  <img height="100" width="100" src= {{a.links[0].href}} routerLink="/add-image" (click)='genServ.currentImageSave(a)'>
+  
 </div>
 <br/>

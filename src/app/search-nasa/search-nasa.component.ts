@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CollectionLoadService } from '../collection-load.service';
 import { Alert } from 'selenium-webdriver';
+import { GeneralService } from '../general.service';
 
 @Component({
   selector: 'app-search-nasa',
@@ -9,7 +10,7 @@ import { Alert } from 'selenium-webdriver';
 })
 export class SearchNasaComponent implements OnInit {
 
-  constructor(public colServ:CollectionLoadService) { }
+  constructor(public colServ:CollectionLoadService, public genServ:GeneralService) { }
 
   allResults 
   tenResults

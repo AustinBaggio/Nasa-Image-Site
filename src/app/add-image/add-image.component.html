@@ -1,0 +1,24 @@
+<p>
+  add-image works!
+</p>
+
+<img src={{genServ.currentImage.links[0].href}}>
+<p>
+  Which Collection would you like to add this photo to?
+</p>
+<table border="1">
+  <tr>
+    <th> </th>
+    <th>Title</th>
+    <th>Description</th>
+
+  </tr>
+  <tr *ngFor='let a of colLoad.dataU;'>
+
+    <td>
+      <button routerLink="/search" (click)='this.addImage(a, genServ.currentImage.links[0].href)'>Add</button>
+    </td>
+    <td>{{a.name}}</td>
+    <td>{{a.descript}}</td>
+  </tr>
+</table>

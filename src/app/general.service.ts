@@ -23,6 +23,8 @@ export class GeneralService {
       .replace(/\'/g, '&#39;'); // '&apos;' is not valid HTML 4
   }
 
+  currentImage
+
   //check the format of emails
   emailFormat(text) {
     //search for an @, if it is before the ., and the length is greater than 1, than the email is in a correct format
@@ -68,5 +70,8 @@ export class GeneralService {
     }
   }
 
+  currentImageSave(a){
+    this.currentImage = a
+  }
 
 }
