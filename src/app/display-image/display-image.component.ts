@@ -19,8 +19,19 @@ export class DisplayImageComponent implements OnInit {
 
   updateRating(rate){
 
+    var col = this.sCol.currentCol
+
+    this.colLoad.updateImageCollection(col.name, col.descript, col.visability, col.owner, col.imageUrls, rate)
+    this.sCol.deleteCollection(col._id);
     
 
+  }
+  myCollection(){
+    console.log(this.genServ.afAuth.auth.currentUser)
+    var a = false
+    if(this.genServ.afAuth.auth.currentUser == this.sCol.currentCol.owner)
+    {return true}
+    return false
   }
 
 }

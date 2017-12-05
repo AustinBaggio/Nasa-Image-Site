@@ -28,7 +28,7 @@ export class FullImageComponent implements OnInit {
       }
     }
 
-    this.colLoad.updateImageCollection(col.name, col.descript, col.visability, col.owner, b)
+    this.colLoad.updateImageCollection(col.name, col.descript, col.visability, col.owner, b, col.rating)
     this.sCol.deleteCollection(col._id);
     
   }

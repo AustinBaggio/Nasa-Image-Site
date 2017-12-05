@@ -23,7 +23,7 @@ export class AddImageComponent implements OnInit {
     
     col.imageUrls.push(link)
     console.log(col.imageUrls)
-    this.colLoad.updateImageCollection(col.name, col.descript, col.visability, col.owner, col.imageUrls)
+    this.colLoad.updateImageCollection(col.name, col.descript, col.visability, col.owner, col.imageUrls, col.rating)
     this.sCol.deleteCollection(col._id);
     
   }

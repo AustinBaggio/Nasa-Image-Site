@@ -54,16 +54,28 @@ export class CollectionLoadService {
       this.dataU = this.user(data);
     })
     this.getData(url).subscribe(data => {
-      this.dataP = this.publicOnly(this.clean(data));
+      this.dataP = this.publicOnlySorted(this.clean(data));
     })
   }
 
-  publicOnly(a) {
+  publicOnlySorted(a) {
     var b = []
     for (var i = 0; i < a.length; i++) {
       if (a[i].visability == true) {
         b.push(a[i]);
       }
+    }
+    var outer, inner;
+    //bubble sort by rating
+    for (outer = b.length - 1; outer > 0; outer--) {
+      for (inner = 0; inner < outer; inner++) {
+        if (b[inner].rating < b[inner + 1].rating) {
+          var temp = b[inner];
+          b[inner] = b[inner + 1];
+          b[inner + 1] = temp;
+        }
+      }
+
     }
     return b
   }
@@ -121,45 +133,29 @@ export class CollectionLoadService {
       }
 
     }
-    for (var i = 0; i < a.length; i++) {
-
-      //shorten down to ten collections
-      if (b.length > 10) {
-        b.pop();
-      }
-    }
-    return b;
+    return this.shorten(b, a.length)
 
   }
 
-  //simple post all
-  postCollectionWithImage(name, desc, vis, own, iUrl) {
-    console.log(name, desc, vis, own, iUrl)
-    var imgArray = []
-    imgArray.push(iUrl);
-
-    const body = {
-      name: name,
-      descript: desc,
-      visability: vis,
-      owner: own,
-      imageUrls: imgArray
-    }
-    this.http.post(this.defaultURL, body).subscribe(
-      (data: any) => {
-        console.log(data)
-      }
-    );
-    alert("Collection Updated")
-    location.replace("/home")
+  shorten(b, length){
+    for (var i = 0; i < length; i++) {
+      
+            //shorten down to ten collections
+            if (b.length > 10) {
+              b.pop();
+            }
+          }
+          return b;
   }
 
+
   //simple post all
-  updateImageCollection(name, desc, vis, own, iUrl) {
-    console.log(name, desc, vis, own, iUrl)
+  updateImageCollection(name, desc, vis, own, iUrl, rate) {
+    console.log(name, desc, vis, own, iUrl, rate)
 
 
     const body = {
+      rating: rate,
       name: name,
       descript: desc,
       visability: vis,

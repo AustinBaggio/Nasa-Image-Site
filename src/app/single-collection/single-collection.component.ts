@@ -24,7 +24,7 @@ export class SingleCollectionComponent implements OnInit {
     var owne=this.genServ.afAuth.auth.currentUser.email
     
     this.sCol.deleteCollection(id);
-    this.colLoad.updateImageCollection(name, desc, vis, owne, urls)
+    this.colLoad.updateImageCollection(name, desc, vis, owne, urls, this.sCol.currentCol.rating)
     
   }
 
